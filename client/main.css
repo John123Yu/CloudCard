@@ -1,0 +1,231 @@
+/* FONTS */
+
+@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One|Open+Sans');
+
+/* COMPREHENSIVE */
+
+*{
+ margin: 0px;
+ padding: 0px;
+}
+
+body {
+	background-image: url(img/background.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	/* (Jacob Gube: http://sixrevisions.com/css/responsive-background-image/) */
+}
+
+#container {
+	width: 100%;
+	margin: 0px auto;
+}
+
+/* PRELOAD SCREEN */
+
+#loader-left {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 51%;
+	background: white;
+	z-index: 1000;
+}
+
+#loader-right {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 51%;
+	background: white;
+	z-index: 1000;
+}
+
+/* LOGO */
+
+#logo {
+	width: 300px;
+	height: 300px;
+	background-color: white;
+	opacity: 0;
+	position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 150px;
+    z-index: 1001;
+    /* (Jonathan Argentiero: http://stackoverflow.com/questions/388180/how-to-make-an-image-center-vertically-horizontally-inside-a-bigger-div); */
+}
+
+/* MAIN CONTENT */
+
+#content {
+	width: 0.1%;
+	height: 0.1%;
+	background-color: white;
+	opacity: .75;
+	position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 75px;
+}
+
+#center-line {
+	height: 70%;
+	width: 2px;
+	background-color: black;
+	opacity: .75;
+	position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+/* LEFT SIDE */
+
+#me {
+	width: 49%;
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+}
+
+#me h1 {
+	font-family: 'Julius Sans One', sans-serif;
+	font-size: 100px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	z-index: 2
+}
+
+#spiel {
+	height: 80%;
+	width: 60%;
+	position: absolute;
+	top: 55%;
+	left: 52.5%;
+	transform: translate(-50%, -50%);
+	z-index: 1
+}
+
+#spiel2 {
+	width: 100%;
+	opacity: .75;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 3vw;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* RIGHT SIDE */
+
+#right {
+	width: 49%;
+	height: 100%;
+	display: inline-block;
+	float: right;
+	position: relative;
+}
+
+#right img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+#link {
+	height: 100px;
+	width: 100px;
+	opacity: 0;
+	z-index: 10;
+}
+
+.second_links {
+	height: 0px;
+	width: 0px;
+	opacity: .75;
+	z-index: 9;
+}
+
+/* FOOTER */
+
+#footer {
+	height: 50px;
+	width: 80%;
+	opacity: .75;
+	position: absolute;
+    margin: auto;
+    top: 90%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#footer p {
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	/*background-color: black;
+	padding: 0 5px;
+	border-radius: 75px;*/
+	font-size: 0px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	opacity: .95;
+	transform: translate(-50%, -50%);
+}
+
+/* MEDIA QUERY FOR RWD */
+
+@media (orientation: portrait) {
+	#center-line {
+		width: 70%;
+		height: 2px;
+	}
+
+	#me {
+		width: 100%;
+		height: 49%;
+	}
+
+	#right {
+		width: 100%;
+		height: 49%;
+	}
+
+	#spiel {
+		top: 60%;
+		width: 40%;
+	}
+
+	#spiel2 {
+		font-size: 4.3vw;
+	}	
+}
+
+/* IF DEVICE IS NOT IPAD/TABLET */
+
+@media (orientation: portrait) and (max-device-width: 700px) {
+	#spiel2 {
+		font-size: 4.5vw;
+	}	
+}

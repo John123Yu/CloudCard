@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+  <head>
+    <title>Friend Events</title>
+<!--     <meta name="viewport" content="width=device-width, initial-scale=.5"> -->
+<!--     <meta name="description" content="Browse through local events posted by other people. Make new friends with similar interests using this new social site!"> -->
+    <script src="jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- // <script type ="text/javascript" src="/socket.io/socket.io.js"></script> -->
+    <script src="angular/angular.js"></script>
+    <script src="angular-route/angular-route.js"></script>
+    <script src="angular-cookies/angular-cookies.js"></script>
+    <script src="ng-file-upload/ng-file-upload.js"></script>
+<!--     // <script src="/ngmap/build/scripts/ng-map.min.js"></script> -->
+  <!--   // <script src="angular-reverse-geocode/dist/angular-reverse-geocode.min.js" charset="utf-8"></script> -->
+
+<!--     <link rel="stylesheet" type="text/css" href="AngularJS-Toaster/toaster.min.css"> -->
+<!--     // <script src = "angular-animate/angular-animate.min.js" type="text/javascript"></script>
+    // <script src = "AngularJS-Toaster/toaster.min.js" type="text/javascript"></script> -->
+
+    <script type="text/javascript">
+        var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngFileUpload']);
+    </script>
+    <script type="text/javascript" src = 'assets/factories/cloudCardFactory.js'></script>
+<!--     // <script type="text/javascript" src = 'assets/controllers/logAndRegController.js'></script> -->
+    // <!-- <script type="text/javascript" src = 'assets/controllers/dashboardController.js'></script> -->
+    <script type="text/javascript" src = 'assets/controllers/userController.js'></script>
+<!--     // <script type="text/javascript" src = 'assets/controllers/chatController.js'></script> -->
+<!--     // <script type="text/javascript" src = 'assets/controllers/editUserController.js'></script> -->
+    // <!-- <script type="text/javascript" src = 'assets/controllers/adminEventsController.js'></script>
+    // <script type="text/javascript" src = 'assets/controllers/adminUsersController.js'></script> -->
+    // <!-- <script type="text/javascript" src = 'assets/controllers/resetEmailController.js'></script>
+    // <script type="text/javascript" src = 'assets/controllers/confirmEmailController.js'></ -->script>
+<script>
+    myApp.config(function ($routeProvider) {
+      $routeProvider
+        .when('/login',{
+            templateUrl: 'partials/logAndReg.html',
+        })
+        .otherwise({
+          redirectTo: '/'
+        });
+    });
+
+myApp.controller('indexController', ['$scope', 'eventFriendsFactory', '$location', '$cookies', '$routeParams', '$interval', '$rootScope', function ($scope, eventFriendsFactory, $location, $cookies, $routeParams, $interval, $rootScope ){
+
+    // $rootScope.$on("loggedIn", function(){
+    //     var loginId = $cookies.get('loginId')
+    //     $scope.loginId = $cookies.get('loginId')
+    //     eventFriendsFactory.getOneUser(loginId, function(data){
+    //       $scope.user = data.data
+    //     })
+    // });
+
+    // $rootScope.$emit("loggedIn", {});
+
+    }])
+    </script>
+    <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <title>Nameer Rizvi</title>
+        <meta name="author" content="Nameer Rizvi">
+        <meta name="description" content="Nameer Rizvi: DC-Area Based Web Designer/Developer.">
+        <meta name="keywords" content="web developer, web designer, css, html, web design, freelance">
+        <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
+        <!-- <meta name="google-site-verification" content="verification_token"> -->
+        <meta name="robots" content="index,follow,noodp,noydir">
+        <meta name="googlebot" content="index,follow,noodp,noydir">
+        <!-- For favicons: IE 11, Chrome, Firefox, Safari, Opera -->
+        <link rel="icon" href="img/logo.png" sizes="16x16" type="image/png">
+        <link rel="icon" href="img/logo.png" sizes="32x32" type="image/png">
+        <link rel="icon" href="img/logo.png" sizes="48x48" type="image/png">
+        <link rel="icon" href="img/logo.png" sizes="62x62" type="image/png">
+        <link rel="icon" href="img/logo.png" sizes="192x192" type="image/png">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/4.3.0/typeit.min.js"></script>
+    <script type="typeit.js"></script>
+    <script>
+            $(document).ready(function(){
+                $("#logo").delay(500).animate({"opacity": ".75"}, {queue: true, duration: 2000});
+                // (A.M.K: http://stackoverflow.com/questions/11679567/using-css-for-fade-in-effect-on-page-load)
+            });
+            $(window).on('load', function() {
+                // INTRO ANIMATIONS
+                $("#loader-left").delay(2000).animate({top:'-55%'}, {queue: true, duration: 5000});
+                $("#loader-right").delay(2000).animate({bottom:'-55%'}, {queue: true, duration: 5000});
+                $("#content").delay(6000).animate({height: '80%', width: '80%'}, {queue: true, duration: 2000});
+                $("#logo").delay(5000).animate({top: "90%", height: '50px', width: '50px'}, {queue: true, duration: 2000});
+                $("#left").delay(9000).animate({"opacity": ".75"}, {queue: true, duration: 1500});
+                $("#link").delay(9750).animate({"opacity": ".75"}, {queue: true, duration: 1500});
+                // RIGHT SIDE ANIMATIONS
+                var linkclicks = 0;
+                $('#link').click(function(){
+                    if(linkclicks == 0){
+                        $('#instagram').animate({top: "80%", left: "70%", height: '80px', width: '80px'});
+                        $('#flickr').animate({top: "80%", left: "30%", height: '80px', width: '80px'});
+                        $('#gmail').animate({top: "50%", left: "20%", height: '60px', width: '80px'});
+                        $('#linkedin').animate({top: "20%", left: "50%", height: '80px', width: '80px'});
+                        $('#github').animate({top: "50%", left: "80%", height: '80px', width: '80px'});
+                        linkclicks++;
+                        console.log("1 link works")
+                    }
+                    else {
+                        $('#instagram').animate({top: "50%", left: "50%", height: '0px', width: '0px'});
+                        $('#flickr').animate({top: "50%", left: "50%", height: '0px', width: '0px'});
+                        $('#gmail').animate({top: "50%", left: "50%", height: '0px', width: '0px'});
+                        $('#linkedin').animate({top: "50%", left: "50%", height: '0px', width: '0px'});
+                        $('#github').animate({top: "50%", left: "50%", height: '0px', width: '0px'});
+                        linkclicks--;
+                        console.log("2 link works")
+                    }
+                });
+                // LEFT SIDE ANIMATIONS
+                var leftclicks = 0;
+                $('#left').click(function(){
+                    if(leftclicks == 0){
+                        $('#left').animate({top: "17%", left: "50%"});
+                        $('#spiel2').animate({"opacity": ".75"}).typeIt({
+                            startDelay: 1000,
+                            strings: ['Nameer Rizvi.', '26.', 'DC-area based.', 'Web designer for hire.', ':)']
+                        })
+                        // (Alex Macarthur: http://macarthur.me/typeit/)
+                        leftclicks++;
+                        console.log("1 left works")
+                    }
+                    else {
+                        $('#spiel2').animate({"opacity": "0"});
+                        $('#left').delay(500).animate({top: "50%", left: "50%"});
+                        leftclicks--;
+                        console.log("2 left works")
+                    }
+                });
+                // FOOTER ANIMATIONS
+                var logoclicks = 0;
+                $('#logo').click(function(){
+                    if(logoclicks == 0){
+                        $('#2017').animate({top: "50%", left: "58%", fontSize: '20px'});
+                        $('#copyright').animate({top: "50%", left: "42%", fontSize: '30px'});
+                        logoclicks++;
+                        console.log("1 logo works")
+                    }
+                    else {
+                        $('#2017').animate({top: "50%", left: "50%", fontSize: '0px'});
+                        $('#copyright').animate({top: "50%", left: "50%", fontSize: '0px'});
+                        logoclicks--;
+                        console.log("2 logo works")
+                    }
+                });
+            });
+    //     </script>
+  </head>
+  <body>
+    <div ng-controller = "indexController" >
+    <div id="container">
+            <!-- PRELOAD SCREEN -->
+            <div id="loader-left"></div>
+            <div id="loader-right"></div>
+            <!-- LOGO -->
+            <img src="img/logo.png" alt="logo" id="logo">
+            <!-- MAIN CONTENT -->
+            <div id="content">
+                <!-- ABOUT ME -->
+                <div id="me">
+                    <h1 id="left">Moi</h1>
+                    <div id="spiel"><p id="spiel2"></p></div>
+                </div>
+                <!-- BARRIER -->
+                <div id="center-line"></div>
+                <!-- LINKS -->
+                <div id="right">
+                    <img src="img/link.svg" alt="link" id="link">
+                    <a href="https://www.instagram.com/_nameer/" target="_blank"><img src="img/link_instagram.png" alt="instagram" id="instagram" class="second_links"></a>
+                    <a href="https://www.flickr.com/1nmr1" target="_blank"><img src="img/link_flickr.svg" alt="flickr" id="flickr" class="second_links"></a>
+                    <a href="mailto:rizvinameer@gmail.com"><img src="img/link_gmail.png" alt="gmail" id="gmail" class="second_links"></a>
+                    <a href="https://www.linkedin.com/in/nameerrizvi" target="_blank"><img src="img/link_linkedin.svg" alt="linkedin" id="linkedin" class="second_links"></a>
+                    <a href="https://github.com/nameer-rizvi" target="_blank"><img src="img/link_github.png" alt="github" id="github" class="second_links"></a>
+                </div>
+            </div>
+            <!-- FOOTER -->
+            <div id="footer">
+                <p id="copyright">&copy;</p>
+                <p id="2017">2017</p>
+            </div>
+        </div>
+    <!-- <div ng-controller = "indexController" class = "header"> -->
+<!--     <toaster-container class= "toast" toaster-options="{'time-out': 7000}"></toaster-container>
+      <ul>
+        <li><span>FriendEvents!</span></li>
+        <li><a href="#!/">Dashboard</a></li>
+        <li><a href="#!/allEvents/">Your Events</a></li>
+        <li><a href="#!/chatLists/">Chats</a></li>
+        <li><a href="#!/user/{{loginId}}">Profile</a></li>
+        <li><a href="#!/event">Create Event</a></li>
+        <li><a href="#!/login">Log Out</a></li>
+        <li ng-if= "user.admin == 'true'"><a href="#!/admin">Admin</a></li>
+      </ul>
+    </div>
+    <div class = "main" ng-app='myApp'>
+        <div ng-view="">
+        </div> -->
+    <!-- </div> -->
+    </div>
+  </body>
+</html>
