@@ -1,4 +1,4 @@
- myApp.factory('eventFriendsFactory', ['$filter', '$http', '$location', function ( $filter, $http, $location){
+ myApp.factory('cloudCardFactory', ['$filter', '$http', '$location', function ( $filter, $http, $location){
 
     var factory = {};
 

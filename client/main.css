@@ -10,7 +10,6 @@
 }
 
 body {
-	background-image: url(img/background.jpg);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -228,4 +227,13 @@ body {
 	#spiel2 {
 		font-size: 4.5vw;
 	}	
+}
+
+/*CSS AFTER ORIGINAL */
+
+.userForm {
+	color: black;
+}
+label {
+	color: black !important;
 }

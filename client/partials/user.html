@@ -1,73 +1,78 @@
 <style type="text/css">
 </style>
-<h1>Welcome To FriendEvents</h1>
-    <div ng-controller='userController'>
-      <div class = "container">
-        <div class = "col-sm-offset-1">
-        <form ng-submit = "addUser()" class = "form-horizontal">
-          <div class = "form-group">
-            <label for ="first_name" class="col-sm-2 control-label">First Name:</label>
-            <p ng-hide ="FNError">{{firstNameError}}</p>
-            <div class = "col-sm-offset-0 col-sm-7 col-xs-10 col-xs-offset-1">
-              <input type='text' class = "form-control" name='first_name' id = "first_name" placeholder = "First Name" ng-model = 'user.firstName'> 
-            </div>
-          </div>
-          <div class = "form-group">
-            <label for = "last_name" class = "col-sm-2 control-label">Last Name:</label>
-            <p ng-hide ="LNError">{{lastNameError}}</p>
-            <div class = "col-sm-offset-0 col-sm-7 col-xs-10 col-xs-offset-1">
-              <input type='text' name='last_name' class = "form-control" id = "last_name" placeholder = "Last Name" ng-model = 'user.lastName'>
-            </div>
-          </div>
-        <div class = "form-group">
-          <label for = "email" class = "col-sm-2 control-label">Email:</label>
-          <p ng-hide ="EError">{{emailError}}</p>
-          <div class = "col-sm-offset-0 col-sm-7 col-xs-10 col-xs-offset-1">
-            <input type='text' name='email' class = "form-control" id = "email" placeholder = "Email" ng-model = 'user.email'>
-          </div>
-        </div>
-        <div class = "form-group">
-          <label for = "birthday" class = "col-sm-2 control-label">Birthday:</label>
-          <p ng-hide ="BError">{{birthdayError}}</p>
-          <div class = "col-sm-offset-0 col-sm-7 col-xs-10 col-xs-offset-1">
-            <input type='date' name='birthday' class = "birthdayDate form-control" id = "birthday" placeholder = "Birthday" ng-model = 'user.birthday'>
-          </div>
-        </div>
-        <div class = "form-group">
-          <label for = "password" class = "col-sm-2 control-label">Password:</label>
-          <p ng-hide ="PError">{{passwordError}}</p>
-          <div class = "col-sm-offset-0 col-sm-7 col-xs-10 col-xs-offset-1">
-            <input type='password' name='password' class = "form-control" id = "password" placeholder = "Password" ng-model = 'user.password'>
-          </div>
-        </div>
-        <div class = "form-group">
-          <label for = "confirmpassword" class = "col-sm-2 control-label">Confirm Password:</label>
-          <p ng-hide ="CPError">{{confirmPasswordError}}</p>
-          <div class = "col-sm-offset-0 col-sm-7 col-xs-10 col-xs-offset-1">
-            <input type='password' name='confirm_password' class = "form-control" id = "confirmpassword"placeholder = "Password" ng-model = 'user.confirmPassword'>
-            <input type='submit' value='Create User' class = "btn btn-primary">
-          </div>
-        </div>
-        </form>
-
-
-        <form  ng-submit = "login()" class = "form-horizontal">
-          <div class = "form-group">
-            <label for = "email" class = "col-sm-2 control-label">Email:</label>
-            <p ng-hide ="noEmailError">{{noEmail}}</p>
-            <div class = "col-sm-offset-0 col-sm-7 col-xs-10 col-xs-offset-1">
-              <input type ='text' name ='email' id = "email" class = "form-control" placeholder = "Email" ng-model = 'user.emailLogin'>
-            </div>
-          </div>
-          <div class = "form-group">
-            <label for = "password" class = "col-sm-2 control-label">Password:</label>
-            <a ng-hide ="IPError" href="#!/resetEmail">Forgot your password?</a>
-            <div class = "col-sm-offset-0 col-sm-7 col-xs-10 col-xs-offset-1">
-              <input type='password' name='password' id = "password" class = "form-control" placeholder = "Password" ng-model = 'user.passwordLogin'>
-              <input type='submit' value='Login' class = "btn login btn-primary last-btn">
-            </div>
-          </div>
-        </form>
+<h2>Set up your Cloud Presence</h2>
+<div ng-controller='userController'>
+  <div class = "container userForm">
+    <form class="col s12 form-wrapper" ng-submit = "createUser()">
+      <div class="row">
+      <div class="input-field col s12">
+        <input  id="first_name" type="text" class="validate" ng-model = 'user.firstName'>
+        <label for="first_name">First Name</label>
+      </div>
+      </div>
+    <div class = "row">
+      <div class="input-field col s12">
+        <input id="last_name" type="text" class="validate" ng-model = 'user.lastName'>
+        <label for="last_name">Last Name</label>
       </div>
     </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" class="validate" ng-model = 'user.email'>
+        <label for="email">Email</label>
+      </div>
     </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="age" type="number" class="validate" ng-model = 'user.age'>
+        <label for="age">Age</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="occupation" type="number" class="validate" ng-model = 'user.occupation'>
+        <label for="occupation">Occupation</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="education" type="number" class="validate" ng-model = 'user.education'>
+        <label for="education">Education/School</label>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="input-field col s12">
+        <input id="instagram" type="text" class="validate" ng-model = 'user.instagram'>
+        <label for="instagram">Instagram</label>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="input-field col s12">
+        <input id="facebook" type="text" class="validate" ng-model = 'user.facebook'>
+        <label for="facebook">Facebook</label>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="input-field col s12">
+        <input id="personalSite" type="text" class="validate" ng-model = 'user.personalSite'>
+        <label for="personalSite">Personal Site</label>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="input-field col s12">
+        <input id="linkedIn" type="text" class="validate" ng-model = 'user.linkedIn'>
+        <label for="linkedIn">LinkedIn</label>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="input-field col s12">
+        <input id="github" type="text" class="validate" ng-model = 'user.github'>
+        <label for="github">Github</label>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right">send</i>
+    </button>
+    </form>
+    <br>
+</div>

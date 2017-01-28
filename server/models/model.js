@@ -51,10 +51,10 @@ var userSchema = new mongoose.Schema({
   	required: [true, 'Birthday is required']
   },
   created_at: { type : Date, default: Date.now },
-  work: {
+  occupation: {
     type: String
   },
-  school: {
+  education: {
     type: String
   },
   gender: {
