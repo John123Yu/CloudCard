@@ -31,38 +31,20 @@ var jade = require('jade');
 
 module.exports = {
 	create: function(req, res){
-      var passcode = ("a" + Math.floor(Math.random() * 10))+ (Math.floor(Math.random() * 10)) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10)
-      var user = new User(req.body);
-      console.log(req.body.birthday)
-      if(user.email) {
-        user.email = user.email.toLowerCase();
-      }
-      if(!user.confirmPasscode){
-        user.confirm = "false";
-        user.confirmPasscode = passcode
-      }
-      user.save(function(err, context) {
-	    if(err) {
-	      console.log('Error with registering new user');
+    var user = new User(req.body);
+    if(user.email) {
+      user.email = user.email.toLowerCase();
+    }
+    user.save(function(err, user) {
+      if(err) {
+        console.log('Error with registering new user');
         console.log(err)
         return res.json(err)
-	    } else {
-	      console.log('successfully registered a new user!');
-        app.mailer.send( 'confirmEmail', {
-            to: req.body.email, 
-            subject: 'Friend Events Confirm Email',
-            text: passcode
-          }, function (err) {
-            if (err) {
-              console.log(err);
-              return res.json({error: 'There was an error sending the confirm email'});
-            } else {
-              console.log("confirm email sent") 
-              return res.json(user)
-            }
-          })
-	    }
-  	})
+      } else {
+        console.log('successfully registered a new user!');
+        return res.json(user)
+      }
+    })
   },
   // confirmEmail: function(req, res) {
   //   User.findOne({confirmPasscode: req.body.passcode}, function(err, user) { 

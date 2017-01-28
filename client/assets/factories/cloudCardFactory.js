@@ -2,12 +2,9 @@
 
     var factory = {};
 
-    factory.addUser = function(newUser, callback) {
-      $http.post('/user', newUser).then(function(data){
-        console.log("data sent back")
-        if(data.data.errors || data.data.errmsg || data.data.firstName) {
-          callback(data);
-        }
+    factory.createUser = function(userInfo, callback) {
+      $http.post('/user', userInfo).then(function(data){
+        callback(data)
       })
     }
     factory.login = function(user, callback) {

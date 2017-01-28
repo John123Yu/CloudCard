@@ -18,6 +18,13 @@ var userSchema = new mongoose.Schema({
   	minlength: [2, 'Last name must be at least 2 characters'],
   	trim: true
   },
+  userName : {
+    type: String,
+    required: [true, 'Username is required'],
+    minlength: [2, 'Username must be at least 2 characters'],
+    trim: true,
+    unique: true
+  },
   email : {
   	type: String,
   	validate: {

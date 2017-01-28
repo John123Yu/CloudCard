@@ -237,3 +237,12 @@ body {
 label {
 	color: black !important;
 }
+h2 {
+	margin-left: 10%;
+}
+.error {
+	color: red;
+}
+.success {
+	color: green;
+}

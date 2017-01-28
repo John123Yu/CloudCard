@@ -1,73 +1,157 @@
 <style type="text/css">
 </style>
-<h2>Set up your Cloud Presence</h2>
 <div ng-controller='userController'>
+<h2>Set up your Cloud Presence</h2>
+
+</form>
   <div class = "container userForm">
-    <form class="col s12 form-wrapper" ng-submit = "createUser()">
+    <form class="col s12 form-wrapper" name="myForm" ng-submit = "createUser()">
       <div class="row">
-      <div class="input-field col s12">
-        <input  id="first_name" type="text" class="validate" ng-model = 'user.firstName'>
-        <label for="first_name">First Name</label>
+      <div class="input-field col s6">
+        <input  id="firstName" name = "firstName" type="text"  ng-model = 'user.firstName' ng-minlength="2" required>
+        <label for="first_name">First Name *</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class = "error" ng-show="myForm.firstName.$touched && myForm.firstName.$invalid">Required Field. Minimum 2 characters.</span>
+        <span class="success" ng-show="myForm.firstName.$valid">&#x2714;</span>
       </div>
       </div>
     <div class = "row">
-      <div class="input-field col s12">
-        <input id="last_name" type="text" class="validate" ng-model = 'user.lastName'>
-        <label for="last_name">Last Name</label>
+      <div class="input-field col s6">
+        <input id="lastName" name = "lastName" type="text"  ng-model = 'user.lastName' ng-minlength="2" required>
+        <label for="lastName">Last Name *</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class = "error" ng-show="myForm.lastName.$touched && myForm.lastName.$invalid">Required Field. Minimum 2 characters.</span>
+        <span class="success" ng-show="myForm.lastName.$valid">&#x2714;</span>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="input-field col s6">
+        <input id="userName" name = "userName" type="text"  ng-model = 'user.userName' ng-minlength="2" required>
+        <label for="userName">User Name *</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class = "error" ng-show="myForm.userName.$touched && myForm.userName.$invalid">Required Field. Minimum 2 characters.</span>
+        <span class="success" ng-show="myForm.userName.$valid">&#x2714;, but we will have to double check it isn't taken.</span>
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s12">
-        <input id="email" type="email" class="validate" ng-model = 'user.email'>
-        <label for="email">Email</label>
+      <div class="input-field col s6">
+        <input id="email" name = "email" type="email"  ng-model = 'user.email' required>
+        <label for="email">Email *</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class = "error" ng-show="myForm.email.$touched && myForm.email.$error.required">Required Field.</span>
+        <span class = "error" ng-show="myForm.email.$error.email">
+        Not a valid email.</span>
+        <span class="success" ng-show="myForm.email.$valid">&#x2714;</span>
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s12">
-        <input id="age" type="number" class="validate" ng-model = 'user.age'>
+      <div class="input-field col s6">
+        <input id="age" name = "age" type="number"  ng-model = 'user.age'>
         <label for="age">Age</label>
       </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.age.$valid">&#x2714;</span>
+      </div>
     </div>
     <div class="row">
-      <div class="input-field col s12">
-        <input id="occupation" type="number" class="validate" ng-model = 'user.occupation'>
+      <div class="input-field col s6">
+        <input id="occupation" name = "occupation" type="number"  ng-model = 'user.occupation'>
         <label for="occupation">Occupation</label>
       </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.occupation.$valid">&#x2714;</span>
+      </div>
     </div>
     <div class="row">
-      <div class="input-field col s12">
-        <input id="education" type="number" class="validate" ng-model = 'user.education'>
+      <div class="input-field col s6">
+        <input id="education" type="number" name = "education" ng-model = 'user.education'>
         <label for="education">Education/School</label>
       </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.education.$valid">&#x2714;</span>
+      </div>
     </div>
     <div class = "row">
-      <div class="input-field col s12">
-        <input id="instagram" type="text" class="validate" ng-model = 'user.instagram'>
+      <div class="input-field col s6">
+        <input id="instagram" type="text" name = "instagram" ng-model = 'user.instagram'>
         <label for="instagram">Instagram</label>
       </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.instagram.$valid">&#x2714;</span>
+      </div>
     </div>
     <div class = "row">
-      <div class="input-field col s12">
-        <input id="facebook" type="text" class="validate" ng-model = 'user.facebook'>
+      <div class="input-field col s6">
+        <input id="facebook" type="text" name = "facebook" ng-model = 'user.facebook'>
         <label for="facebook">Facebook</label>
       </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.facebook.$valid">&#x2714;</span>
+      </div>
     </div>
     <div class = "row">
-      <div class="input-field col s12">
-        <input id="personalSite" type="text" class="validate" ng-model = 'user.personalSite'>
+      <div class="input-field col s6">
+        <input id="personalSite" name = "personalSite" type="text"  ng-model = 'user.personalSite'>
         <label for="personalSite">Personal Site</label>
       </div>
-    </div>
-    <div class = "row">
-      <div class="input-field col s12">
-        <input id="linkedIn" type="text" class="validate" ng-model = 'user.linkedIn'>
-        <label for="linkedIn">LinkedIn</label>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.personalSite.$valid">&#x2714;</span>
       </div>
     </div>
     <div class = "row">
-      <div class="input-field col s12">
-        <input id="github" type="text" class="validate" ng-model = 'user.github'>
+      <div class="input-field col s6">
+        <input id="linkedIn" type="text" name = "linkedIn" ng-model = 'user.linkedIn'>
+        <label for="linkedIn">LinkedIn</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.linkedIn.$valid">&#x2714;</span>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="input-field col s6">
+        <input id="github" type="text" name = "github" ng-model = 'user.github'>
         <label for="github">Github</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.github.$valid">&#x2714;</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input  id="password" name = "password" type="text"  ng-model = 'user.password' ng-pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,32}/" required>
+        <label for="first_name">Password *</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class = "error" class="error" ng-show="myForm.password.$error.pattern && myForm.password.$touched">Requires 1 uppercase, lowercase, number, and special character. 8-32 characters.</span>
+        <span class="success" ng-show="myForm.password.$valid">&#x2714;</span>
+      </div>
+    </div>
+     <div class="row">
+      <div class="input-field col s6">
+        <input  id="confirmPassword" name = "confirmPassword" type="text"  ng-model = 'user.confirmPassword' required>
+        <label for="first_name">Confirm Password *</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class = "error" ng-show="myForm.confirmPassword.$touched && myForm.confirmPassword.$invalid">Required Field. Must match password field.</span>
+        <span class="success" ng-show="myForm.confirmPassword.$valid">&#x2714;</span>
       </div>
     </div>
     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
