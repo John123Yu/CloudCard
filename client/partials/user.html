@@ -36,7 +36,7 @@
       <div class = "col s6">
         <br>
         <span class = "error" ng-show="myForm.userName.$touched && myForm.userName.$invalid">Required Field. Minimum 2 characters.</span>
-        <span class="success" ng-show="myForm.userName.$valid">&#x2714;, but we will have to double check it isn't taken.</span>
+        <span class="success" ng-show="myForm.userName.$valid">&#x2714; but we will have to double check availability.</span>
       </div>
     </div>
     <div class="row">
@@ -53,33 +53,44 @@
       </div>
     </div>
     <div class="row">
+        <div class="input-field col s6">
+          <textarea id="description" name = "description" g-maxlength="180" ng-minlength="10" ng-model = "user.description" class="materialize-textarea" required></textarea>
+          <label for="description">Textarea</label>
+        </div>
+        <div class = "col s6">
+          <br>
+          <span class = "error" ng-show="myForm.description.$touched && myForm.description.$invalid">Required Field. 10-180 Characters.</span>
+          <span class="success" ng-show="myForm.description.$valid">&#x2714;</span>
+      </div>
+      </div>
+    <div class="row">
       <div class="input-field col s6">
-        <input id="age" name = "age" type="number"  ng-model = 'user.age'>
+        <input id="age" name = "age" ng-Inputlength type="number"  ng-model = 'user.age'>
         <label for="age">Age</label>
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.age.$valid">&#x2714;</span>
+        <span class="success" ng-show="myForm.age.$touched && myForm.age.$valid && ageLength > 0 ">&#x2714;</span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <input id="occupation" name = "occupation" type="number"  ng-model = 'user.occupation'>
+        <input id="occupation" name = "occupation" type="text"  ng-model = 'user.occupation'>
         <label for="occupation">Occupation</label>
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.occupation.$valid">&#x2714;</span>
+        <span class="success" ng-show="myForm.occupation.$touched &&myForm.occupation.$valid && occupationLength > 0 ">&#x2714;</span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <input id="education" type="number" name = "education" ng-model = 'user.education'>
+        <input id="education" type="text" name = "education" ng-model = 'user.education'>
         <label for="education">Education/School</label>
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.education.$valid">&#x2714;</span>
+        <span class="success" ng-show="myForm.education.$touched &&myForm.education.$valid && educationLength > 0 ">&#x2714;</span>
       </div>
     </div>
     <div class = "row">
@@ -89,7 +100,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.instagram.$valid">&#x2714;</span>
+        <span class="success" ng-show="myForm.instagram.$touched &&myForm.instagram.$valid && instagramLength > 0"> &#x2714;</span>
       </div>
     </div>
     <div class = "row">
@@ -99,7 +110,17 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.facebook.$valid">&#x2714;</span>
+        <span class="success" ng-show="myForm.facebook.$touched &&myForm.facebook.$valid && facebookLength > 0" >&#x2714;</span>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="input-field col s6">
+        <input id="flickr" type="text" name = "flickr" ng-model = 'user.flickr'>
+        <label for="flickr">Flickr</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.flickr.$touched &&myForm.flickr.$valid && flickrLength > 0" >&#x2714;</span>
       </div>
     </div>
     <div class = "row">
@@ -109,7 +130,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.personalSite.$valid">&#x2714;</span>
+        <span class="success" ng-show="myForm.personalSite.$touched &&myForm.personalSite.$valid && personalSiteLength > 0" >&#x2714;</span>
       </div>
     </div>
     <div class = "row">
@@ -119,7 +140,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.linkedIn.$valid">&#x2714;</span>
+        <span class="success" ng-show="myForm.linkedIn.$touched &&myForm.linkedIn.$valid && linkedInLength > 0 ">&#x2714;</span>
       </div>
     </div>
     <div class = "row">
@@ -129,7 +150,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.github.$valid">&#x2714;</span>
+        <span class="success" ng-show="myForm.github.$touched && myForm.github.$valid && githubLength > 0 ">&#x2714;</span>
       </div>
     </div>
     <div class="row">
@@ -145,7 +166,7 @@
     </div>
      <div class="row">
       <div class="input-field col s6">
-        <input  id="confirmPassword" name = "confirmPassword" type="text"  ng-model = 'user.confirmPassword' required>
+        <input  id="confirmPassword" name = "confirmPassword" type="text"  ng-model = 'user.confirmPassword' compare-to="user.password" required>
         <label for="first_name">Confirm Password *</label>
       </div>
       <div class = "col s6">

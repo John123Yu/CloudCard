@@ -1,0 +1,38 @@
+<style type="text/css">
+    body {
+        background-image: url(img/background.jpg);
+    }
+</style>
+<div ng-controller = "card1Controller" >
+    <div id="container">
+    <!-- PRELOAD SCREEN -->
+    <div id="loader-left"></div>
+    <div id="loader-right"></div>
+    <!-- LOGO -->
+    <img src="img/logo.png" alt="logo" id="logo">
+    <!-- MAIN CONTENT -->
+    <div id="content">
+        <!-- ABOUT ME -->
+        <div id="me">
+            <h1 id="left">Moi</h1>
+            <div id="spiel"><p id="spiel2"></p></div>
+        </div>
+        <!-- BARRIER -->
+        <div id="center-line"></div>
+        <!-- LINKS -->
+        <div id="right">
+            <img src="img/link.svg" alt="link" id="link">
+            <a href="https://{{user.instagram}}" target="_blank"><img src="img/link_instagram.png" alt="instagram" id="instagram" class="second_links"></a>
+            <a href="https://{{user.flickr}}" target="_blank"><img src="img/link_flickr.svg" alt="flickr" id="flickr" class="second_links"></a>
+            <a href="mailto:{{user.email}}"><img src="img/link_gmail.png" alt="gmail" id="gmail" class="second_links"></a>
+            <a href="https://{{user.linkedIn}}" target="_blank"><img src="img/link_linkedin.svg" alt="linkedin" id="linkedin" class="second_links"></a>
+            <a href="https://{{user.github}}" target="_blank"><img src="img/link_github.png" alt="github" id="github" class="second_links"></a>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <div id="footer">
+        <p id="copyright">&copy;</p>
+        <p id="2017">2017</p>
+    </div>
+</div>
+</div>

@@ -34,6 +34,7 @@ module.exports = {
     var user = new User(req.body);
     if(user.email) {
       user.email = user.email.toLowerCase();
+      user.userName = user.userName.toLowerCase();
     }
     user.save(function(err, user) {
       if(err) {
@@ -82,7 +83,7 @@ module.exports = {
         }
       }
     })
-  }
+  },
   // editUser: function(req, res){
   //   User.update({_id: req.params.id}, {truth1: req.body.truth1, truth2: req.body.truth2, lie: req.body.lie, work: req.body.work, school: req.body.school, gender: req.body.gender}, function(err, user) {
   //       if(err) {
@@ -93,18 +94,18 @@ module.exports = {
   //       }
   //   })
   // },
-  // getOneUser: function (req, res) {
-  //   User.findOne({_id: req.params.id}, null, {sort: 'created_at'}).exec( function(err, context) {
-  //     if(context) {
-  //       console.log('success getting one user')
-  //       return res.json(context)
-  //     }
-  //     else {
-  //       console.log('no user yet')
-  //       return res.json(context)
-  //     }
-  //   })
-  // },
+  getOneUser: function (req, res) {
+    User.findOne({userName: req.body.id.toLowerCase()}).exec( function(err, user) {
+      if(user) {
+        console.log('success getting one user')
+        return res.json(user)
+      }
+      else {
+        console.log('no user yet')
+        return res.json(user)
+      }
+    })
+  },
   // removeUser: function(req, res){
   //   User.remove({_id: req.params.id}, function(err, user) {
   //       if(err) {

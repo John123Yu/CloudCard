@@ -24,12 +24,12 @@
     //     callback(data);
     //   })
     // }
-    // factory.getOneUser = function(userId, callback) {
-    //   $http.get('/getOneUser/' + userId).then(function(data) {
-    //     console.log('got one user')
-    //     callback(data);
-    //   })
-    // }
+    factory.getOneUser = function(userInfo, callback) {
+      $http.post('/getOneUser', userInfo).then(function(data) {
+        console.log('got one user')
+        callback(data);
+      })
+    }
     
     // factory.removeUser = function(id, callback){
     //   $http.delete('/removeUser/' + id).then(function(data){

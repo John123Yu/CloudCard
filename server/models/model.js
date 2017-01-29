@@ -25,6 +25,12 @@ var userSchema = new mongoose.Schema({
     trim: true,
     unique: true
   },
+  description : {
+    type: String,
+    required: [true],
+    minlength: [10],
+    maxlength: [180]
+  },
   email : {
   	type: String,
   	validate: {
@@ -37,11 +43,12 @@ var userSchema = new mongoose.Schema({
 	required: [true, "Email is required"],
 	unique: true
   },
-  LinkedIn: String,
-  Instagram: String,
-  Facebook: String,
-  GitHub: String,
+  linkedIn: String,
+  instagram: String,
+  facebook: String,
+  github: String,
   personalSite: String,
+  flickr: String,
   password: {
     type: String,
     required: [true, 'Password is required'],
@@ -53,10 +60,10 @@ var userSchema = new mongoose.Schema({
       message: "Password failed validation, you must have at least 1 number, uppercase and special character"
     }
   },
-  birthday: {
-  	type: Date,
-  	required: [true, 'Birthday is required']
-  },
+  // birthday: {
+  // 	type: Date,
+  // 	required: [true, 'Birthday is required']
+  // },
   created_at: { type : Date, default: Date.now },
   occupation: {
     type: String
@@ -64,12 +71,8 @@ var userSchema = new mongoose.Schema({
   education: {
     type: String
   },
-  gender: {
-    type: String
-  },
   // Photo: { data: },
   posts: [{type: Schema.Types.ObjectId, ref: 'Posts'}],
-  privateChats: [{type: Schema.Types.ObjectId, ref: 'Private'}],
   admin: String,
   passcode:{type: String, default: "9382730"},
   confirm: String,

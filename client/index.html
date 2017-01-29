@@ -8,6 +8,7 @@
     <script src="jquery/dist/jquery.js"></script>
     <link rel="stylesheet" href="materialize/dist/css/materialize.min.css"></script>
     <script src="materialize/dist/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="Ionicons/css/ionicons.css"></script>
     <script src="angular/angular.js"></script>  
     <script src="angular-route/angular-route.js"></script>
     <script src="angular-cookies/angular-cookies.js"></script>
@@ -18,6 +19,7 @@
     <script type="text/javascript" src = 'assets/factories/cloudCardFactory.js'></script>
     <script type="text/javascript" src = 'assets/controllers/userController.js'></script>
     <script type="text/javascript" src = 'assets/controllers/indexController.js'></script>
+     <script type="text/javascript" src = 'assets/controllers/card1Controller.js'></script>
 <script>
     myApp.config(function ($routeProvider) {
       $routeProvider
@@ -29,6 +31,9 @@
         })
         .when('/users', {
             templateUrl: 'partials/user.html'
+        })
+        .when('/card1/:id', {
+            templateUrl: 'partials/card1.html'
         })
         .otherwise({
           redirectTo: '/'

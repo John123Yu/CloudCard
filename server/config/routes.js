@@ -20,9 +20,9 @@ app.post('/login', function(req, res) {
 //   user.editUser(req,res)
 // });
 
-// app.get('/getOneUser/:id', function(req, res) {
-//   user.getOneUser(req, res)
-// })
+app.post('/getOneUser', function(req, res) {
+  user.getOneUser(req, res)
+})
 
 // app.delete('/removeUser/:id',function(req, res){
 //   user.removeUser(req,res)

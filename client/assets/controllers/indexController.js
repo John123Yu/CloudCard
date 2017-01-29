@@ -1,4 +1,4 @@
-myApp.controller('indexController', ['$scope', 'cloudCardFactory', '$location', '$cookies', '$routeParams', '$interval', '$rootScope', function ($scope, eventFriendsFactory, $location, $cookies, $routeParams, $interval, $rootScope ){
+myApp.controller('indexController', ['$scope', 'cloudCardFactory', '$location', '$cookies', '$routeParams', '$interval', '$rootScope', function ($scope, cloudCardFactory, $location, $cookies, $routeParams, $interval, $rootScope ){
 
 console.log("here")
 
