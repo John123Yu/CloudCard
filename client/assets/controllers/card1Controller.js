@@ -7,33 +7,38 @@ cloudCardFactory.getOneUser($routeParams, function(data){
 
 
 $(document).ready(function(){
-    $("#logo").delay(300).animate({"opacity": ".75"}, {queue: true, duration: 1500});
+    // $("#logo").delay(300).animate({"opacity": ".75"}, {queue: true, duration: 1500});
     // (A.M.K: http://stackoverflow.com/questions/11679567/using-css-for-fade-in-effect-on-page-load)
     // INTRO ANIMATIONS
-    $("#loader-left").delay(1500).animate({top:'-55%'}, {queue: true, duration: 3000});
-    $("#loader-right").delay(1500).animate({bottom:'-55%'}, {queue: true, duration: 3000});
-    $("#content").delay(4000).animate({height: '80%', width: '80%'}, {queue: true, duration: 1500});
-    $("#logo").delay(3000).animate({top: "90%", height: '50px', width: '50px'}, {queue: true, duration: 1500});
-    $("#left").delay(6000).animate({"opacity": ".75"}, {queue: true, duration: 1000});
-    $("#link").delay(6000).animate({"opacity": ".75"}, {queue: true, duration: 1000});
-    // RIGHT SIDE ANIMATIONS
+    $("#loader-left").delay(750).animate({top:'-55%'}, {queue: true, duration: 1500});
+    $("#loader-right").delay(750).animate({bottom:'-55%'}, {queue: true, duration: 1500});
+    $("#content").delay(2000).animate({height: '80%', width: '80%'}, {queue: true, duration: 750});
+    $("#logo").delay(1500).animate({top: "90%", height: '50px', width: '50px'}, {queue: true, duration: 750});
+    $("#left").delay(3000).animate({"opacity": ".75"}, {queue: true, duration: 500});
+    $("#link").delay(3000).animate({"opacity": ".75"}, {queue: true, duration: 500});
+    
+     // RIGHT SIDE ANIMATIONS
+    // Default --------------------------//
+    $('#github, #linkedin, #gmail, #facebook, #instagram').css("font-size", "0em");
+    $('#instagram, #facebook, #gmail, #linkedin, #github').animate({top: "35%", left: "40%"});
+    // Default ----------------------------//
+    
+
     var linkclicks = 0;
     $('#link').click(function(){
         if(linkclicks == 0){
-            $('#instagram').animate({top: "80%", left: "70%", height: '80px', width: '80px'});
-            $('#flickr').animate({top: "80%", left: "30%", height: '80px', width: '80px'});
-            $('#gmail').animate({top: "50%", left: "20%", height: '60px', width: '80px'});
-            $('#linkedin').animate({top: "20%", left: "50%", height: '80px', width: '80px'});
-            $('#github').animate({top: "50%", left: "80%", height: '80px', width: '80px'});
+            $('#github, #linkedin, #gmail, #facebook, #instagram').css("font-size", "7em");
+            $('#instagram').animate({top: "60%", left: "60%"});
+            $('#facebook').animate({top: "60%", left: "20%"});
+            $('#gmail').animate({top: "35%", left: "10%"});
+            $('#linkedin').animate({top: "10%", left: "40%"});
+            $('#github').animate({top: "35%", left: "70%"});
             linkclicks++;
             console.log("1 link works")
         }
         else {
-            $('#instagram').animate({top: "50%", left: "50%", height: '0px', width: '0px'});
-            $('#flickr').animate({top: "50%", left: "50%", height: '0px', width: '0px'});
-            $('#gmail').animate({top: "50%", left: "50%", height: '0px', width: '0px'});
-            $('#linkedin').animate({top: "50%", left: "50%", height: '0px', width: '0px'});
-            $('#github').animate({top: "50%", left: "50%", height: '0px', width: '0px'});
+            $('#github, #linkedin, #gmail, #facebook, #instagram').css("font-size", "0em");
+            $('#instagram, #facebook, #gmail, #linkedin, #github').animate({top: "35%", left: "40%"});
             linkclicks--;
             console.log("2 link works")
         }

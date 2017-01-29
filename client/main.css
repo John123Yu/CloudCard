@@ -66,7 +66,7 @@ body {
 	width: 0.1%;
 	height: 0.1%;
 	background-color: white;
-	opacity: .75;
+	opacity: .85;
 	position: absolute;
     margin: auto;
     top: 0;
@@ -80,7 +80,7 @@ body {
 	height: 70%;
 	width: 2px;
 	background-color: black;
-	opacity: .75;
+	opacity: .85;
 	position: absolute;
     margin: auto;
     top: 0;
@@ -124,7 +124,7 @@ body {
 
 #spiel2 {
 	width: 100%;
-	opacity: .75;
+	opacity: .85;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 3vw;
 	position: absolute;
@@ -161,7 +161,7 @@ body {
 .second_links {
 	height: 0px;
 	width: 0px;
-	opacity: .75;
+	opacity: 1;
 	z-index: 9;
 }
 
@@ -245,4 +245,24 @@ h2 {
 }
 .success {
 	color: green;
+}
+i {
+	position: absolute;
+	opacity: 100%;
+}
+#github {
+	color: purple;
+}
+#facebook {
+	color: #3B5998;
+}
+#instagram {
+	color: #4E433C;
+}
+#gmail {
+	color: #C63D2D
+;
+}
+#linkedin {
+	color:  #4875B4
 }
