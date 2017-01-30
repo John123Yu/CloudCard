@@ -8,13 +8,15 @@
     <script src="jquery/dist/jquery.js"></script>
     <link rel="stylesheet" href="materialize/dist/css/materialize.min.css"></script>
     <script src="materialize/dist/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="Ionicons/css/ionicons.css"></script>
     <script src="angular/angular.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
+    <link rel="stylesheet" href="Ionicons/css/ionicons.css"></script>
     <script src="angular-route/angular-route.js"></script>
     <script src="angular-cookies/angular-cookies.js"></script>
     <script src="ng-file-upload/ng-file-upload.js"></script>
     <script type="text/javascript">
-        var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngFileUpload']);
+        var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngFileUpload', 'ui.materialize']);
+        // var app = angular.module('materializeApp', ['ui.materialize'])
     </script>
     <script type="text/javascript" src = 'assets/factories/cloudCardFactory.js'></script>
     <script type="text/javascript" src = 'assets/controllers/userController.js'></script>

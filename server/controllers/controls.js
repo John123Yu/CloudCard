@@ -106,6 +106,20 @@ module.exports = {
       }
     })
   },
+  changeColors: function (req, res) {
+    console.log(req.body)
+    User.update({_id: req.body.userId}, {instagramColor: req.body.instagramColor }, function(err, user) {
+      if(user) {
+        console.log(user)
+        console.log('success editing colors')
+        return res.json(user)
+      }
+      else {
+        console.log('no user yet')
+        return res.json(user)
+      }
+    })
+  },
   // removeUser: function(req, res){
   //   User.remove({_id: req.params.id}, function(err, user) {
   //       if(err) {

@@ -40,7 +40,6 @@ myApp.controller('userController', ['$scope', 'cloudCardFactory', '$location', '
 
   $scope.createUser = function() {
     cloudCardFactory.createUser($scope.user, function(data) {
-      
       console.log(data)
     })
   }

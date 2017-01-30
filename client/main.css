@@ -143,12 +143,12 @@ body {
 	position: relative;
 }
 
-#right img {
+/*#right img {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-}
+}*/
 
 
 #link {
@@ -156,6 +156,9 @@ body {
 	width: 100px;
 	opacity: 0;
 	z-index: 10;
+	top: 35%;
+	left: 40%;
+	font-size: 7em;
 }
 
 .second_links {
@@ -265,4 +268,13 @@ i {
 }
 #linkedin {
 	color:  #4875B4
+}
+.fixed-action-btn {
+	text-align: left;
+}
+.btn .btn-large {
+	text-align: left;
+}
+.btn-floating {
+	text-align: left;
 }

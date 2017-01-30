@@ -13,7 +13,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class = "error" ng-show="myForm.firstName.$touched && myForm.firstName.$invalid">Required Field. Minimum 2 characters.</span>
+        <span class = "error" ng-show="myForm.firstName.$dirty && myForm.firstName.$invalid">Required Field. Minimum 2 characters.</span>
         <span class="success" ng-show="myForm.firstName.$valid">&#x2714;</span>
       </div>
       </div>
@@ -24,7 +24,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class = "error" ng-show="myForm.lastName.$touched && myForm.lastName.$invalid">Required Field. Minimum 2 characters.</span>
+        <span class = "error" ng-show="myForm.lastName.$dirty && myForm.lastName.$invalid">Required Field. Minimum 2 characters.</span>
         <span class="success" ng-show="myForm.lastName.$valid">&#x2714;</span>
       </div>
     </div>
@@ -35,7 +35,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class = "error" ng-show="myForm.userName.$touched && myForm.userName.$invalid">Required Field. Minimum 2 characters.</span>
+        <span class = "error" ng-show="myForm.userName.$dirty && myForm.userName.$invalid">Required Field. Minimum 2 characters.</span>
         <span class="success" ng-show="myForm.userName.$valid">&#x2714; but we will have to double check availability.</span>
       </div>
     </div>
@@ -46,7 +46,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class = "error" ng-show="myForm.email.$touched && myForm.email.$error.required">Required Field.</span>
+        <span class = "error" ng-show="myForm.email.$dirty && myForm.email.$error.required">Required Field.</span>
         <span class = "error" ng-show="myForm.email.$error.email">
         Not a valid email.</span>
         <span class="success" ng-show="myForm.email.$valid">&#x2714;</span>
@@ -59,7 +59,7 @@
         </div>
         <div class = "col s6">
           <br>
-          <span class = "error" ng-show="myForm.description.$touched && myForm.description.$invalid">Required Field. 10-180 Characters.</span>
+          <span class = "error" ng-show="myForm.description.$dirty && myForm.description.$invalid">Required Field. 10-180 Characters.</span>
           <span class="success" ng-show="myForm.description.$valid">&#x2714;</span>
       </div>
       </div>
@@ -70,7 +70,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.age.$touched && myForm.age.$valid && ageLength > 0 ">&#x2714;</span>
+        <span class="success" ng-show="myForm.age.$dirty && myForm.age.$valid && ageLength > 0 ">&#x2714;</span>
       </div>
     </div>
     <div class="row">
@@ -80,7 +80,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.occupation.$touched &&myForm.occupation.$valid && occupationLength > 0 ">&#x2714;</span>
+        <span class="success" ng-show="myForm.occupation.$dirty &&myForm.occupation.$valid && occupationLength > 0 ">&#x2714;</span>
       </div>
     </div>
     <div class="row">
@@ -90,7 +90,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.education.$touched &&myForm.education.$valid && educationLength > 0 ">&#x2714;</span>
+        <span class="success" ng-show="myForm.education.$dirty &&myForm.education.$valid && educationLength > 0 ">&#x2714;</span>
       </div>
     </div>
     <div class = "row">
@@ -100,7 +100,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.instagram.$touched &&myForm.instagram.$valid && instagramLength > 0"> &#x2714;</span>
+        <span class="success" ng-show="myForm.instagram.$dirty &&myForm.instagram.$valid && instagramLength > 0"> &#x2714;</span>
       </div>
     </div>
     <div class = "row">
@@ -110,7 +110,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.facebook.$touched &&myForm.facebook.$valid && facebookLength > 0" >&#x2714;</span>
+        <span class="success" ng-show="myForm.facebook.$dirty &&myForm.facebook.$valid && facebookLength > 0" >&#x2714;</span>
       </div>
     </div>
     <div class = "row">
@@ -120,7 +120,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.flickr.$touched &&myForm.flickr.$valid && flickrLength > 0" >&#x2714;</span>
+        <span class="success" ng-show="myForm.flickr.$dirty &&myForm.flickr.$valid && flickrLength > 0" >&#x2714;</span>
       </div>
     </div>
     <div class = "row">
@@ -130,7 +130,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.personalSite.$touched &&myForm.personalSite.$valid && personalSiteLength > 0" >&#x2714;</span>
+        <span class="success" ng-show="myForm.personalSite.$dirty &&myForm.personalSite.$valid && personalSiteLength > 0" >&#x2714;</span>
       </div>
     </div>
     <div class = "row">
@@ -140,7 +140,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.linkedIn.$touched &&myForm.linkedIn.$valid && linkedInLength > 0 ">&#x2714;</span>
+        <span class="success" ng-show="myForm.linkedIn.$dirty &&myForm.linkedIn.$valid && linkedInLength > 0 ">&#x2714;</span>
       </div>
     </div>
     <div class = "row">
@@ -150,7 +150,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class="success" ng-show="myForm.github.$touched && myForm.github.$valid && githubLength > 0 ">&#x2714;</span>
+        <span class="success" ng-show="myForm.github.$dirty && myForm.github.$valid && githubLength > 0 ">&#x2714;</span>
       </div>
     </div>
     <div class="row">
@@ -160,7 +160,7 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class = "error" class="error" ng-show="myForm.password.$error.pattern && myForm.password.$touched">Requires 1 uppercase, lowercase, number, and special character. 8-32 characters.</span>
+        <span class = "error" class="error" ng-show="myForm.password.$error.pattern && myForm.password.$dirty">Requires 1 uppercase, lowercase, number, and special character. 8-32 characters.</span>
         <span class="success" ng-show="myForm.password.$valid">&#x2714;</span>
       </div>
     </div>
@@ -171,10 +171,20 @@
       </div>
       <div class = "col s6">
         <br>
-        <span class = "error" ng-show="myForm.confirmPassword.$touched && myForm.confirmPassword.$invalid">Required Field. Must match password field.</span>
+        <span class = "error" ng-show="myForm.confirmPassword.$dirty && myForm.confirmPassword.$invalid">Required Field. Must match password field.</span>
         <span class="success" ng-show="myForm.confirmPassword.$valid">&#x2714;</span>
       </div>
     </div>
+                <select class="instagram-select" ng-model="user.color" material-select watch>
+                <option>Red</option>
+                <option>Orange</option>
+                <option >Yellow</option>
+                <option >Green</option>
+                <option >Blue</option>
+                <option >Indigo</option>
+                <option >Violet</option>
+                </select>
+                <label>Instagram</label>
     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
       <i class="material-icons right">send</i>
     </button>

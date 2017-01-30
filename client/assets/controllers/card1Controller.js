@@ -1,10 +1,23 @@
 myApp.controller('card1Controller', ['$scope', 'cloudCardFactory', '$location', '$cookies', '$routeParams', '$interval', '$rootScope', function ($scope, cloudCardFactory, $location, $cookies, $routeParams, $interval, $rootScope ){
 
-cloudCardFactory.getOneUser($routeParams, function(data){
-	console.log(data.data)
-    $scope.user = data.data
+$scope.$watch('check', function(newValue, oldValue) {
+    cloudCardFactory.getOneUser($routeParams, function(data){
+        $scope.user = data.data
+        console.log($scope.user.instagramColor)
+        if($scope.user.instagramColor) {
+            $('#instagram').css("color", $scope.user.instagramColor)
+        }
+    })
 })
 
+$scope.changeColors = function() {
+    console.log($scope.color)
+    $scope.color.userId = $scope.user._id
+    cloudCardFactory.changeColors($scope.color, function(data) {
+      console.log(data)
+      $scope.check = data;
+    })
+}
 
 $(document).ready(function(){
     // $("#logo").delay(300).animate({"opacity": ".75"}, {queue: true, duration: 1500});
@@ -28,17 +41,20 @@ $(document).ready(function(){
     $('#link').click(function(){
         if(linkclicks == 0){
             $('#github, #linkedin, #gmail, #facebook, #instagram').css("font-size", "7em");
-            $('#instagram').animate({top: "60%", left: "60%"});
-            $('#facebook').animate({top: "60%", left: "20%"});
-            $('#gmail').animate({top: "35%", left: "10%"});
-            $('#linkedin').animate({top: "10%", left: "40%"});
+            $('#instagram').animate({top: "60%", left: "62%"});
+            $('#facebook').animate({top: "60%", left: "25%"});
+            $('#gmail').animate({top: "35%", left: "5%"});
+            $('#linkedin').animate({top: "11%", left: "40%"});
             $('#github').animate({top: "35%", left: "70%"});
             linkclicks++;
             console.log("1 link works")
         }
         else {
-            $('#github, #linkedin, #gmail, #facebook, #instagram').css("font-size", "0em");
             $('#instagram, #facebook, #gmail, #linkedin, #github').animate({top: "35%", left: "40%"});
+            $('#github, #linkedin, #gmail, #facebook, #instagram').delay(200).queue(function (next) { 
+                $(this).css("font-size", "0em"); 
+                 next(); 
+             })
             linkclicks--;
             console.log("2 link works")
         }
@@ -46,11 +62,12 @@ $(document).ready(function(){
     // LEFT SIDE ANIMATIONS
     var leftclicks = 0;
     $('#left').click(function(){
+        var fullname = $scope.user.firstName + " " + $scope.user.lastName
         if(leftclicks == 0){
             $('#left').animate({top: "17%", left: "50%"});
             $('#spiel2').animate({"opacity": ".75"}).typeIt({
                 startDelay: 750,
-                strings: [$scope.user.description]
+                strings: [fullname, $scope.user.description]
             })
             // (Alex Macarthur: http://macarthur.me/typeit/)
             leftclicks++;

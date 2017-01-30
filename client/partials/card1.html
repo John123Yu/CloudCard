@@ -4,6 +4,42 @@
     }
 </style>
 <div ng-controller = "card1Controller" >
+
+    <div class="fixed-action-btn horizontal">
+        <a class="btn-floating btn-large red">
+            <i class="large material-icons">mode_edit</i>
+        </a>
+        <ul>
+            <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+            <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+            <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+            <li><a class="btn-floating blue modal-trigger waves-effect waves-light btn" data-target="selectColor" modal><i class="material-icons">settings</i></a></li>
+         </ul>
+    </div>
+
+    <div id="selectColor" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h3>Choose your colors:</h3>
+            <br>
+            <form class="col s12 form-wrapper" name="myForm" ng-submit = "changeColors()">
+                <select class="instagram-select" ng-model="color.instagramColor" material-select watch>
+                <option value = "#FF0000">Red</option>
+                <option value = "#FF7F00">Orange</option>
+                <option value = "#FFFF00">Yellow</option>
+                <option value = "#00FF00">Green</option>
+                <option value = "#0000FF">Blue</option>
+                <option value = "#4B0082">Indigo</option>
+                <option value = "#9400D3">Violet</option>
+                </select>
+                <label>Instagram</label>
+                <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+
     <div id="container">
     <!-- PRELOAD SCREEN -->
     <div id="loader-left"></div>
@@ -21,7 +57,8 @@
         <div id="center-line"></div>
         <!-- LINKS -->
         <div id="right">
-            <img src="img/link.svg" alt="link" id="link">
+            <!-- <img src="img/link.svg" alt="link" id="link"> -->
+            <i class = "ion-social-buffer" id= "link"></i>
 
             <a href="https://{{user.instagram}}" target="_blank"><i class = "ion-social-instagram-outline second_links" alt="instagram" id="instagram"></i></a>
             

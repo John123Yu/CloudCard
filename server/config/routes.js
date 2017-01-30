@@ -24,6 +24,10 @@ app.post('/getOneUser', function(req, res) {
   user.getOneUser(req, res)
 })
 
+app.post('/changeColors', function(req, res) {
+  user.changeColors(req, res)
+})
+
 // app.delete('/removeUser/:id',function(req, res){
 //   user.removeUser(req,res)
 // });

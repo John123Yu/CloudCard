@@ -30,6 +30,13 @@
         callback(data);
       })
     }
+    factory.changeColors = function(colors, callback) {
+      $http.post('/changeColors', colors).then(function(data) {
+        console.log('colors changed')
+        callback(data);
+      })
+    }
+
     
     // factory.removeUser = function(id, callback){
     //   $http.delete('/removeUser/' + id).then(function(data){
