@@ -37,6 +37,12 @@
       })
     }
 
+    factory.updateDefaultPic = function(picUrl, callback) {
+      $http.post('/updateDefaultPic', picUrl).then(function(data) {
+        console.log('default picture saved')
+        callback(data);
+      })
+    }
     
     // factory.removeUser = function(id, callback){
     //   $http.delete('/removeUser/' + id).then(function(data){

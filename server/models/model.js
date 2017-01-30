@@ -43,6 +43,7 @@ var userSchema = new mongoose.Schema({
 	required: [true, "Email is required"],
 	unique: true
   },
+  defaultBackgroundPic: String,
   age: Number,
   twitter: String,
   twitterColor: String,
@@ -86,7 +87,7 @@ var userSchema = new mongoose.Schema({
   passcode:{type: String, default: "9382730"},
   confirm: String,
   confirmPasscode: String,
-  userPicUrl: String
+  backgroundPics:  [{type: Schema.Types.ObjectId, ref: 'BackgroundPic'}]
  });
 userSchema.methods.generateHash = function(password) {
 	if(password.length > 32) {
@@ -104,3 +105,11 @@ userSchema.methods.validPassword = function(password) {
 }
 
 mongoose.model('User', userSchema);
+
+var backgroundPicSchema = new mongoose.Schema({
+  name: String,
+  url: String,
+  _user: {type: Schema.Types.ObjectId, ref: 'User'},
+  created_at: { type : Date, default: Date.now },
+});
+mongoose.model('BackgroundPic', backgroundPicSchema);

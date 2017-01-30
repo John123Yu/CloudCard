@@ -1,11 +1,17 @@
-myApp.controller('card1Controller', ['$scope', 'cloudCardFactory', '$location', '$cookies', '$routeParams', '$interval', '$rootScope', function ($scope, cloudCardFactory, $location, $cookies, $routeParams, $interval, $rootScope ){
+myApp.controller('card1Controller', ['$scope', 'cloudCardFactory', '$location', '$cookies', '$routeParams', '$interval', '$rootScope', 'Upload', function ($scope, cloudCardFactory, $location, $cookies, $routeParams, $interval, $rootScope, Upload ){
 
 $scope.$watch('check', function(newValue, oldValue) {
     cloudCardFactory.getOneUser($routeParams, function(data){
         $scope.user = data.data
+        console.log($scope.user)
         console.log($scope.user.instagramColor)
         if($scope.user.instagramColor) {
             $('#instagram').css("color", $scope.user.instagramColor)
+        }
+        if($scope.user.defaultBackgroundPic) {
+            $('body').css('background-image', 'url(' + $scope.user.defaultBackgroundPic +')');
+        } else {
+            $('body').css('background-image', 'url(img/background.jpg)');    
         }
     })
 })
@@ -18,6 +24,32 @@ $scope.changeColors = function() {
       $scope.check = data;
     })
 }
+
+$scope.uploadBackgroundPic = function(image) {
+    $scope.upload = Upload.upload({
+        url: '/uploadBackgroundPic',
+        method: 'POST',
+        data: {
+          file: image,
+          id: $scope.user._id
+        },
+        file: image
+    }).success(function(data, status, headers, config) {
+        console.log('background photo uploaded')
+        $scope.check = data
+    }).error(function(err) {
+        console.log('background photo upload failure')
+    });
+} 
+
+$scope.setDefaultPic = function() {
+    console.log($scope.user)
+    $('body').css('background-image', 'url(' + $scope.user.backgroundPicDefault +')');
+    cloudCardFactory.updateDefaultPic($scope.user, function(data) {
+      console.log(data)
+    })
+}
+
 
 $(document).ready(function(){
     // $("#logo").delay(300).animate({"opacity": ".75"}, {queue: true, duration: 1500});

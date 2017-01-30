@@ -92,6 +92,9 @@ body {
 }
 
 /* LEFT SIDE */
+#left {
+	cursor: pointer;
+}
 
 #me {
 	width: 49%;
@@ -119,7 +122,7 @@ body {
 	top: 55%;
 	left: 52.5%;
 	transform: translate(-50%, -50%);
-	z-index: 1
+	z-index: 1;
 }
 
 #spiel2 {
@@ -159,6 +162,7 @@ body {
 	top: 35%;
 	left: 40%;
 	font-size: 7em;
+	cursor: pointer;
 }
 
 .second_links {

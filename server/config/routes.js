@@ -28,6 +28,14 @@ app.post('/changeColors', function(req, res) {
   user.changeColors(req, res)
 })
 
+app.post('/updateDefaultPic', function(req, res) {
+  user.updateDefaultPic(req, res)
+})
+
+app.post('/uploadBackgroundPic/', multipartMiddleware, function(req, res) {
+  user.uploadBackgroundPic(req, res)
+})
+
 // app.delete('/removeUser/:id',function(req, res){
 //   user.removeUser(req,res)
 // });

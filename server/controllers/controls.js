@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var BackgroundPic = mongoose.model('BackgroundPic');
 // var Posts = mongoose.model('Posts');
 var multiparty = require('multiparty');
 var uuid = require('uuid');
@@ -24,10 +25,10 @@ var jade = require('jade');
 //   }
 // });
 
-// var s3Impl = new s3('', {
-//     accessKeyId: '',
-//     secretAccessKey: ''
-// });
+var s3Impl = new s3('', {
+    accessKeyId: '',
+    secretAccessKey: ''
+});
 
 module.exports = {
 	create: function(req, res){
@@ -95,7 +96,7 @@ module.exports = {
   //   })
   // },
   getOneUser: function (req, res) {
-    User.findOne({userName: req.body.id.toLowerCase()}).exec( function(err, user) {
+    User.findOne({userName: req.body.id.toLowerCase()}).populate({path: 'backgroundPics'}).exec( function(err, user) {
       if(user) {
         console.log('success getting one user')
         return res.json(user)
@@ -120,6 +121,46 @@ module.exports = {
       }
     })
   },
+  updateDefaultPic: function (req, res) {
+    User.update({_id: req.body._id}, {defaultBackgroundPic: req.body.backgroundPicDefault }, function(err, user) {
+      if(user) {
+        console.log(user)
+        console.log('success updating default background')
+        return res.json(user)
+      }
+      else {
+        console.log('no user yet')
+        return res.json(user)
+      }
+    })
+  },
+  uploadBackgroundPic: function(req, res) {
+    User.findOne({_id :req.body.id}, function(err, user) {
+      if(err) {
+        console.log(err)
+      } else {
+        console.log(req.files)
+        console.log('got user for photo upload')
+        var backgroundPic = new BackgroundPic();
+        backgroundPic._user = user._id
+        backgroundPic.name = req.files.file.name
+        var file = req.files.file;
+        var stream = fs.createReadStream(file.path);
+        var extension = file.path.substring(file.path.lastIndexOf('.'));
+        var temp = uuid.v4()
+        var destPath = temp + extension;
+        var base = "https://s3.amazonaws.com/cloudcard/";
+        backgroundPic.url = ('https://s3.amazonaws.com/cloudcard/' + destPath)
+        backgroundPic.save()
+        user.backgroundPics.push(backgroundPic)
+        user.save()
+        return s3Impl.writeFile(destPath, stream, {ContentType: file.type}).then(function(one){
+            fs.unlink(file.path);
+            res.send(base + destPath); 
+        });
+      }
+    })
+  },
   // removeUser: function(req, res){
   //   User.remove({_id: req.params.id}, function(err, user) {
   //       if(err) {
@@ -129,27 +170,6 @@ module.exports = {
   //         console.log('successfully removed an user!');
   //         return res.json(user)
   //       }
-  //   })
-  // },
-  // uploadPic: function(req, res) {
-  //   User.findOne({_id :req.body.id}, function(err, context) {
-  //     if(err) {
-  //       console.log(err)
-  //     } else {
-  //       console.log('got user for photo upload')
-  //       var file = req.files.file;
-  //       var stream = fs.createReadStream(file.path);
-  //       var extension = file.path.substring(file.path.lastIndexOf('.'));
-  //       var temp = uuid.v4()
-  //       var destPath = '/eventImage/' +  temp + extension;
-  //       var base = "https://s3.amazonaws.com/friendevents/";
-  //       context.userPicUrl = ('https://s3.amazonaws.com/friendevents/eventImage/' + temp + extension)
-  //       context.save()
-  //       return s3Impl.writeFile(destPath, stream, {ContentType: file.type}).then(function(one){
-  //           fs.unlink(file.path);
-  //           res.send(base + destPath); 
-  //       });
-  //     }
   //   })
   // },
   // privateChat: function(req, res){
