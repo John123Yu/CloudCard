@@ -9,6 +9,16 @@ var fs = require('fs');
 var app = require('express')();
 var mailer = require('express-mailer');
 var jade = require('jade');
+var aws = require('aws-sdk');
+var BUCKET = 'cloudcard';
+
+aws.config.loadFromPath(require('path').join(__dirname, './aws-config.json'));
+
+// aws.config.aws_access_key_id = ''
+// aws.config.aws_secret_access_key = ''
+// aws.config.region = 'us-east-1'
+
+var s9 = new aws.S3();
 
 // app.set('views', __dirname + '/views');
 // app.set('view engine', 'jade');
@@ -25,7 +35,7 @@ var jade = require('jade');
 //   }
 // });
 
-var s3Impl = new s3('', {
+var s3Impl = new s3('cloudcard', {
     accessKeyId: '',
     secretAccessKey: ''
 });
@@ -48,19 +58,6 @@ module.exports = {
       }
     })
   },
-  // confirmEmail: function(req, res) {
-  //   User.findOne({confirmPasscode: req.body.passcode}, function(err, user) { 
-  //     if(user == null) {
-  //       console.log('not a stored passcode')
-  //       return res.json({null: "Invalid Passcode"})
-  //     } else {
-  //       console.log('confirm Passcode went through!')
-  //       user.confirm = "true";
-  //       user.save();
-  //       return res.json(user)
-  //     }
-  //   })
-  // },
   login: function(req, res) {
     User.find({ email: req.body.emailLogin.toLowerCase()}, function(err, context) {
       if(context[0] == null){
@@ -109,7 +106,7 @@ module.exports = {
   },
   changeColors: function (req, res) {
     console.log(req.body)
-    User.update({_id: req.body.userId}, {instagramColor: req.body.instagramColor }, function(err, user) {
+    User.update({_id: req.body.userId}, {instagramColor: req.body.instagramColor, linkedInColor: req.body.linkedInColor, facebookColor: req.body.facebookColor, githubColor: req.body.githubColor, emailColor: req.body.emailColor }, function(err, user) {
       if(user) {
         console.log(user)
         console.log('success editing colors')
@@ -135,32 +132,86 @@ module.exports = {
     })
   },
   uploadBackgroundPic: function(req, res) {
-    User.findOne({_id :req.body.id}, function(err, user) {
+    User.findOne({_id :req.body.id}).populate({path: 'backgroundPics', sort: 'created_at'}).exec( function(err, user) {
       if(err) {
         console.log(err)
       } else {
         console.log(req.files)
-        console.log('got user for photo upload')
-        var backgroundPic = new BackgroundPic();
-        backgroundPic._user = user._id
-        backgroundPic.name = req.files.file.name
-        var file = req.files.file;
-        var stream = fs.createReadStream(file.path);
-        var extension = file.path.substring(file.path.lastIndexOf('.'));
-        var temp = uuid.v4()
-        var destPath = temp + extension;
-        var base = "https://s3.amazonaws.com/cloudcard/";
-        backgroundPic.url = ('https://s3.amazonaws.com/cloudcard/' + destPath)
-        backgroundPic.save()
-        user.backgroundPics.push(backgroundPic)
-        user.save()
-        return s3Impl.writeFile(destPath, stream, {ContentType: file.type}).then(function(one){
-            fs.unlink(file.path);
-            res.send(base + destPath); 
-        });
+        if(req.files.file) {
+          console.log('got user for photo upload')
+          var backgroundPic = new BackgroundPic();
+          backgroundPic._user = user._id
+          if(req.files.file.name) {
+            backgroundPic.name = req.files.file.name
+          } else {
+            backgroudPic.name = req.files.file.originalFilename
+          }
+          var file = req.files.file;
+          var stream = fs.createReadStream(file.path);
+          var extension = file.path.substring(file.path.lastIndexOf('.'));
+          var temp = uuid.v4()
+          var destPath = temp + extension;
+          var base = "https://s3.amazonaws.com/cloudcard/";
+          backgroundPic.url = ('https://s3.amazonaws.com/cloudcard/' + destPath)
+          backgroundPic.destPath = destPath
+          backgroundPic.save()
+          user.backgroundPics.push(backgroundPic)
+          user.defaultBackgroundPic = 'https://s3.amazonaws.com/cloudcard/' + destPath
+          user.save();  
+          
+
+          // user.save()
+          // console.log(user.backgroundPics)
+          // console.log(user.backgroundPics.length)
+          // console.log(user.backgroundPics[0])
+          // console.log(user.backgroundPics[0].destPath)
+          if(user.backgroundPics.length >= 6) {
+            var params = {
+              Bucket: 'cloudcard', 
+              Delete: { 
+                Objects: [ 
+                  {
+                    Key: user.backgroundPics[0].destPath 
+                  }
+                ],
+              },
+            };
+            BackgroundPic.remove({_id: user.backgroundPics[0]._id}).exec(function(err, context) {
+              if(context) {
+                console.log(context)
+              }
+            })
+            s9.deleteObjects(params, function(err, data) {
+              if (err) {
+                console.log(err, err.stack);
+              } else {
+                console.log(data); 
+              }         
+            });  
+          }
+
+
+          return s3Impl.writeFile(destPath, stream, {ContentType: file.type}).then(function(one){
+              fs.unlink(file.path);
+              res.send(base + destPath); 
+          });
+
+        }
       }
     })
   },
+  // removeFromBucket: function (req, res) {
+  //   User.findOne({_id : req.body.id}).populate({path: 'backgroundPics'}).exec( function(err, user) {
+  //     if(user) {
+  //       console.log('success getting one user')
+  //       return res.json(user)
+  //     }
+  //     else {
+  //       console.log('no user yet')
+  //       return res.json(user)
+  //     }
+  //   })
+  // },
   // removeUser: function(req, res){
   //   User.remove({_id: req.params.id}, function(err, user) {
   //       if(err) {

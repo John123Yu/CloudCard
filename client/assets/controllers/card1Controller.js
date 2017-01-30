@@ -8,6 +8,18 @@ $scope.$watch('check', function(newValue, oldValue) {
         if($scope.user.instagramColor) {
             $('#instagram').css("color", $scope.user.instagramColor)
         }
+        if($scope.user.linkedInColor) {
+            $('#linkedIn').css("color", $scope.user.linkedInColor)
+        }
+        if($scope.user.facebookColor) {
+            $('#facebook').css("color", $scope.user.facebookColor)
+        }
+        if($scope.user.githubColor) {
+            $('#github').css("color", $scope.user.githubColor)
+        }
+        if($scope.user.emailColor) {
+            $('#email').css("color", $scope.user.emailColor)
+        }
         if($scope.user.defaultBackgroundPic) {
             $('body').css('background-image', 'url(' + $scope.user.defaultBackgroundPic +')');
         } else {
@@ -15,6 +27,8 @@ $scope.$watch('check', function(newValue, oldValue) {
         }
     })
 })
+
+
 
 $scope.changeColors = function() {
     console.log($scope.color)
@@ -50,7 +64,6 @@ $scope.setDefaultPic = function() {
     })
 }
 
-
 $(document).ready(function(){
     // $("#logo").delay(300).animate({"opacity": ".75"}, {queue: true, duration: 1500});
     // (A.M.K: http://stackoverflow.com/questions/11679567/using-css-for-fade-in-effect-on-page-load)
@@ -64,26 +77,26 @@ $(document).ready(function(){
     
      // RIGHT SIDE ANIMATIONS
     // Default --------------------------//
-    $('#github, #linkedin, #gmail, #facebook, #instagram').css("font-size", "0em");
-    $('#instagram, #facebook, #gmail, #linkedin, #github').animate({top: "35%", left: "40%"});
+    $('#github, #linkedIn, #email, #facebook, #instagram').css("font-size", "0em");
+    $('#instagram, #facebook, #email, #linkedIn, #github').animate({top: "35%", left: "40%"});
     // Default ----------------------------//
     
 
     var linkclicks = 0;
     $('#link').click(function(){
         if(linkclicks == 0){
-            $('#github, #linkedin, #gmail, #facebook, #instagram').css("font-size", "7em");
+            $('#github, #linkedIn, #email, #facebook, #instagram').css("font-size", "7em");
             $('#instagram').animate({top: "60%", left: "62%"});
             $('#facebook').animate({top: "60%", left: "25%"});
-            $('#gmail').animate({top: "35%", left: "5%"});
-            $('#linkedin').animate({top: "11%", left: "40%"});
+            $('#email').animate({top: "35%", left: "5%"});
+            $('#linkedIn').animate({top: "11%", left: "40%"});
             $('#github').animate({top: "35%", left: "70%"});
             linkclicks++;
             console.log("1 link works")
         }
         else {
-            $('#instagram, #facebook, #gmail, #linkedin, #github').animate({top: "35%", left: "40%"});
-            $('#github, #linkedin, #gmail, #facebook, #instagram').delay(200).queue(function (next) { 
+            $('#instagram, #facebook, #email, #linkedIn, #github').animate({top: "35%", left: "40%"});
+            $('#github, #linkedIn, #email, #facebook, #instagram').delay(200).queue(function (next) { 
                 $(this).css("font-size", "0em"); 
                  next(); 
              })

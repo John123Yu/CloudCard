@@ -45,6 +45,7 @@ var userSchema = new mongoose.Schema({
   },
   defaultBackgroundPic: String,
   age: Number,
+  emailColor: String,
   twitter: String,
   twitterColor: String,
   linkedIn: String,
@@ -108,6 +109,7 @@ mongoose.model('User', userSchema);
 
 var backgroundPicSchema = new mongoose.Schema({
   name: String,
+  destPath: String,
   url: String,
   _user: {type: Schema.Types.ObjectId, ref: 'User'},
   created_at: { type : Date, default: Date.now },

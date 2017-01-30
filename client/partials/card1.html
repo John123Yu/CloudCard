@@ -34,6 +34,54 @@
                 </select>
                 <label>Instagram</label>
                 </div>
+                <div class = "input-field">
+                <select class="linkedIn-select" ng-model="color.linkedInColor" material-select watch>
+                <option value = "#FF0000">Red</option>
+                <option value = "#FF7F00">Orange</option>
+                <option value = "#FFFF00">Yellow</option>
+                <option value = "#00FF00">Green</option>
+                <option value = "#0000FF">Blue</option>
+                <option value = "#4B0082">Indigo</option>
+                <option value = "#9400D3">Violet</option>
+                </select>
+                <label>Linked In</label>
+                </div>
+                <div class = "input-field">
+                <select class="facebook-select" ng-model="color.facebookColor" material-select watch>
+                <option value = "#FF0000">Red</option>
+                <option value = "#FF7F00">Orange</option>
+                <option value = "#FFFF00">Yellow</option>
+                <option value = "#00FF00">Green</option>
+                <option value = "#0000FF">Blue</option>
+                <option value = "#4B0082">Indigo</option>
+                <option value = "#9400D3">Violet</option>
+                </select>
+                <label>Facebook</label>
+                </div>
+                <div class = "input-field">
+                <select class="github-select" ng-model="color.githubColor" material-select watch>
+                <option value = "#FF0000">Red</option>
+                <option value = "#FF7F00">Orange</option>
+                <option value = "#FFFF00">Yellow</option>
+                <option value = "#00FF00">Green</option>
+                <option value = "#0000FF">Blue</option>
+                <option value = "#4B0082">Indigo</option>
+                <option value = "#9400D3">Violet</option>
+                </select>
+                <label>Github</label>
+                </div>
+                <div class = "input-field">
+                <select class="email-select" ng-model="color.emailColor" material-select watch>
+                <option value = "#FF0000">Red</option>
+                <option value = "#FF7F00">Orange</option>
+                <option value = "#FFFF00">Yellow</option>
+                <option value = "#00FF00">Green</option>
+                <option value = "#0000FF">Blue</option>
+                <option value = "#4B0082">Indigo</option>
+                <option value = "#9400D3">Violet</option>
+                </select>
+                <label>Email</label>
+                </div>
                 <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
                 </button>
@@ -43,24 +91,27 @@
 
     <div id="selectImage" class="modal modal-fixed-footer">
         <div class="modal-content">
-            <h3>Choose your colors:</h3>
+            <h3>Choose your backdrop:</h3>
             <br>
             <form  ng-app="fileUpload" class="col s12 form-wrapper" name="myForm">
-            <input class = "btn btn-primary" type="file" ngf-select ng-model="picFile" name="file" 
-            accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+            <input class = "btnuploadPicBtn" type="file" ngf-select ng-model="picFile" name="file" 
+            accept="image/*" ngf-max-size="4MB" required ngf-model-invalid="errorFile">
             <br>
             <br>
-            <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action" ng-click="uploadBackgroundPic(picFile)">Upload
+            <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action" ng-click="uploadBackgroundPic(picFile)">Upload Your Own Pictures
             </button>
             <br>
             </form>
+            <br>
+            <hr>
+            <br>
 
             <form class="col s12 form-wrapper" name="myForm" ng-submit = "setDefaultPic()">
             <div class = "input-field">
             <select ng-model="user.backgroundPicDefault" material-select watch>
                 <option ng-repeat="item in user.backgroundPics" value = "{{item.url}}">{{item.name}}</option>
             </select>
-            <label>Choose Picture</label>
+            <label>Choose From Your Uploaded Pictures</label>
             </div>
             <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Choose
                 <i class="material-icons right">send</i>
@@ -80,7 +131,7 @@
     <div id="content">
         <!-- ABOUT ME -->
         <div id="me">
-            <h1 id="left">Moi</h1>
+            <h1 id="left">ME</h1>
             <div id="spiel"><p id="spiel2"></p></div>
         </div>
         <!-- BARRIER -->
@@ -94,9 +145,9 @@
             
             <a href="https://{{user.facebook}}" target="_blank"><i class = "second_links ion-social-facebook"  alt="facebook" id="facebook"></i></a>
             
-            <a href="mailto:{{user.email}}"><i class = "ion-android-mail second_links" alt="gmail" id="gmail"></i></a>
+            <a href="mailto:{{user.email}}"><i class = "ion-android-mail second_links" alt="email" id="email"></i></a>
             
-            <a href="https://{{user.linkedIn}}" target="_blank"><i alt="linkedin" id="linkedin" class = "ion-social-linkedin second_links"></i></a>
+            <a href="https://{{user.linkedIn}}" target="_blank"><i alt="linkedIn" id="linkedIn" class = "ion-social-linkedin second_links"></i></a>
             
             <a href="https://{{user.github}}" target="_blank"><i alt="github" id="github" class = "ion-social-github second_links"></i></a>
         </div>
