@@ -194,12 +194,12 @@ module.exports = {
           var extension = file.path.substring(file.path.lastIndexOf('.'));
           var temp = uuid.v4()
           var destPath = temp + extension;
-          var base = "https://s3.amazonaws.com/cloudcard/";
-          backgroundPic.url = ('https://s3.amazonaws.com/cloudcard/' + destPath)
+          var base = "https://s3.amazonaws.com//";
+          backgroundPic.url = ('https://s3.amazonaws.com//' + destPath)
           backgroundPic.destPath = destPath
           backgroundPic.save()
           user.backgroundPics.push(backgroundPic)
-          user.defaultBackgroundPic = 'https://s3.amazonaws.com/cloudcard/' + destPath
+          user.defaultBackgroundPic = 'https://s3.amazonaws.com//' + destPath
           user.save();  
           
 
