@@ -10,19 +10,20 @@
             <i class="large material-icons">mode_edit</i>
         </a>
         <ul>
-            <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-            <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-            <li><a class="btn-floating green modal-trigger waves-effect waves-light btn" data-target="selectImage" modal><i class="material-icons">perm_media</i></a></li>
-            <li><a class="btn-floating blue modal-trigger waves-effect waves-light btn" data-target="selectColor" modal><i class="material-icons">settings</i></a></li>
+            <li><a style="display:none" data-target="addressMap" modal></a></li>
+            <li><a class="btn-floating purple darken-1" data-target="updateInfo" modal><i class="ion-ios-list"></i></a></li>
+            <li><a ng-click = "shuffle()" class="btn-floating orange darken-1"><i class="ion-ios-shuffle-strong"></i></a></li>
+            <li><a class="btn-floating red" data-target="selectColor" modal><i class="ion-paintbrush"></i></a></li>
+            <li><a class="btn-floating green modal-trigger waves-effect waves-light btn" data-target="selectImage" modal><i class="ion-image"></i></a></li>
+            <li><a class="btn-floating blue modal-trigger waves-effect waves-light btn" data-target="selectIcons" modal><i class="ion-grid"></i></a></li>
          </ul>
     </div>
-
     <div id="selectColor" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h3>Choose your colors:</h3>
             <br>
             <form class="col s12 form-wrapper" name="myForm" ng-submit = "changeColors()">
-                <div class = "input-field">
+                <div ng-hide="instagramColorSelect" class = "input-field">
                 <select class="instagram-select" ng-model="color.instagramColor" material-select watch>
                 <option value = "#FF0000">Red</option>
                 <option value = "#FF7F00">Orange</option>
@@ -34,7 +35,7 @@
                 </select>
                 <label>Instagram</label>
                 </div>
-                <div class = "input-field">
+                <div ng-hide="linkedInColorSelect" class = "input-field">
                 <select class="linkedIn-select" ng-model="color.linkedInColor" material-select watch>
                 <option value = "#FF0000">Red</option>
                 <option value = "#FF7F00">Orange</option>
@@ -46,7 +47,7 @@
                 </select>
                 <label>Linked In</label>
                 </div>
-                <div class = "input-field">
+                <div ng-hide="facebookColorSelect" class = "input-field">
                 <select class="facebook-select" ng-model="color.facebookColor" material-select watch>
                 <option value = "#FF0000">Red</option>
                 <option value = "#FF7F00">Orange</option>
@@ -58,7 +59,7 @@
                 </select>
                 <label>Facebook</label>
                 </div>
-                <div class = "input-field">
+                <div ng-hide="githubColorSelect" class = "input-field">
                 <select class="github-select" ng-model="color.githubColor" material-select watch>
                 <option value = "#FF0000">Red</option>
                 <option value = "#FF7F00">Orange</option>
@@ -70,7 +71,7 @@
                 </select>
                 <label>Github</label>
                 </div>
-                <div class = "input-field">
+                <div ng-hide="emailColorSelect" class = "input-field">
                 <select class="email-select" ng-model="color.emailColor" material-select watch>
                 <option value = "#FF0000">Red</option>
                 <option value = "#FF7F00">Orange</option>
@@ -82,11 +83,74 @@
                 </select>
                 <label>Email</label>
                 </div>
-                <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Submit
-                <i class="material-icons right">send</i>
-                </button>
-            </form>
+                <div ng-hide="twitterColorSelect" class = "input-field">
+                <select class="twitter-select" ng-model="color.twitterColor" material-select watch>
+                <option value = "#FF0000">Red</option>
+                <option value = "#FF7F00">Orange</option>
+                <option value = "#FFFF00">Yellow</option>
+                <option value = "#00FF00">Green</option>
+                <option value = "#0000FF">Blue</option>
+                <option value = "#4B0082">Indigo</option>
+                <option value = "#9400D3">Violet</option>
+                </select>
+                <label>Twitter</label>
+                </div>
+                <div ng-hide="flickrColorSelect" class = "input-field">
+                <select class="flickr-select" ng-model="color.flickrColor" material-select watch>
+                <option value = "#FF0000">Red</option>
+                <option value = "#FF7F00">Orange</option>
+                <option value = "#FFFF00">Yellow</option>
+                <option value = "#00FF00">Green</option>
+                <option value = "#0000FF">Blue</option>
+                <option value = "#4B0082">Indigo</option>
+                <option value = "#9400D3">Violet</option>
+                </select>
+                <label>Flickr</label>
+                </div>
+                <div ng-hide="personalSiteColorSelect" class = "input-field">
+                <select class="personalSite-select" ng-model="color.personalSiteColor" material-select watch>
+                <option value = "#FF0000">Red</option>
+                <option value = "#FF7F00">Orange</option>
+                <option value = "#FFFF00">Yellow</option>
+                <option value = "#00FF00">Green</option>
+                <option value = "#0000FF">Blue</option>
+                <option value = "#4B0082">Indigo</option>
+                <option value = "#9400D3">Violet</option>
+                </select>
+                <label>Personal Site</label>
+                </div>
+                <div ng-hide="phoneColorSelect" class = "input-field">
+                <select class="phone-select" ng-model="color.phoneColor" material-select watch>
+                <option value = "#FF0000"></option>
+                <option value = "#FF0000">Red</option>
+                <option value = "#FF7F00">Orange</option>
+                <option value = "#FFFF00">Yellow</option>
+                <option value = "#00FF00">Green</option>
+                <option value = "#0000FF">Blue</option>
+                <option value = "#4B0082">Indigo</option>
+                <option value = "#9400D3">Violet</option>
+                </select>
+                <label>Phone</label>
+                </div>
+                <div ng-hide="addressColorSelect" class = "input-field">
+                <select class="address-select" ng-model="color.addressColor" material-select watch>
+                <option value = "#FF0000">Red</option>
+                <option value = "#FF7F00">Orange</option>
+                <option value = "#FFFF00">Yellow</option>
+                <option value = "#00FF00">Green</option>
+                <option value = "#0000FF">Blue</option>
+                <option value = "#4B0082">Indigo</option>
+                <option value = "#9400D3">Violet</option>
+                </select>
+                <label>Address</label>
+                </div>
         </div>
+                <div class = "modal-footer">
+                    <button ng-click = "changeColors()" class ="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
     </div>
 
     <div id="selectImage" class="modal modal-fixed-footer">
@@ -120,6 +184,109 @@
         </div>
     </div>
 
+    <div id="selectIcons" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h3>Select your icons: (5-8)</h3>
+            <br>
+            <form id = "formSelectIcons" class="col s12 form-wrapper" name="myForm" ng-submit = "selectIcons()">
+                <p ng-if = "user.instagram">
+                  <input ng-model="icon.icon1" ng-true-value="'instagramIcon'" ng-false-value="null"type="checkbox" id="test1" />
+                  <label for="test1">Instagram</label>
+                </p>
+                <p ng-if = "user.instagram">
+                  <input ng-model="icon.icon2"  ng-false-value="null" ng-true-value= "'emailIcon'" type="checkbox" id="test2"/>
+                  <label for="test2">Email</label>
+                </p>
+                <p ng-if = "user.twitter">
+                  <input ng-model="icon.icon3"  ng-false-value="null" ng-true-value = "'twitterIcon'" type="checkbox" id = "test3" />
+                  <label for="test3">Twitter</label>
+                </p>
+                <p ng-if = "user.linkedIn">
+                  <input ng-model="icon.icon4"  ng-false-value="null" ng-true-value = "'linkedInIcon'" type="checkbox" id="test4"/>
+                  <label for="test4">LinkedIn</label>
+                </p>
+                <p ng-if = "user.facebook">
+                  <input ng-model="icon.icon5"  ng-false-value="null" ng-true-value = "'facebookIcon'" type="checkbox" id="test5" />
+                  <label for="test5">Facebook</label>
+                </p>
+                <p ng-if = "user.github">
+                  <input ng-model="icon.icon6" ng-false-value="null" ng-true-value = "'githubIcon'" type="checkbox" id="test6"/>
+                  <label for="test6">GitHub</label>
+                </p>
+                <p ng-if = "user.personalSite" >
+                  <input ng-model="icon.icon7"  ng-false-value="null" ng-true-value = "'personalSiteIcon'" type="checkbox" id="test7"/>
+                  <label for="test7">Personal Website</label>
+                </p>
+                <p ng-if = "user.flickr">
+                  <input ng-model="icon.icon8"  ng-false-value="null" ng-true-value = "'flickrIcon'" type="checkbox" id="test8"/>
+                  <label for="test8">Flickr</label>
+                </p>
+                <p ng-if = "user.phone" >
+                  <input ng-model="icon.icon9" ng-false-value="null" ng-true-value = "'phoneIcon'" type="checkbox" id="test9"/>
+                  <label for="test9">Phone</label>
+                </p>
+                <p ng-if = "user.address">
+                  <input ng-model="icon.icon10" ng-false-value="null" ng-true-value = "'addressIcon'" type="checkbox" id="test10"/>
+                  <label for="test10">Address</label>
+                </p>
+              </form>
+        </div>
+                <div class="modal-footer">
+                    <a ng-disabled = "!myForm.$valid" ng-click = "selectIcons()" class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                    </a>
+                </div>
+    </div>
+
+    <div id="updateInfo" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h3>Update your information:</h3>
+            <br>
+            <form id = "updateInfoForm" class="col s12 form-wrapper" name="myForm" ng-submit = "updateInfo()">
+               <div class="row">
+                <div class="input-field col s6">
+                <input  id="street" name = "street" type="text"  ng-model = 'user.street'>
+                <label for="street">Street Address</label>
+              </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                <input  id="city" name = "city" type="text"  ng-model = 'user.city'>
+                <label for="city">City</label>
+              </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                <input  id="state" name = "state" type="text"  ng-model = 'user.state'>
+                <label for="state">State</label>
+              </div>
+              </div>
+               <div class="row">
+                <div class="input-field col s6">
+                <input  id="zipcode" name = "zipcode" type="text"  ng-model = 'user.zipcode'>
+                <label for="zipcode">Zipcode</label>
+              </div>
+              </div>
+            </form>
+        </div>
+                <div class="modal-footer">
+                    <a ng-disabled = "!myForm.$valid" ng-click = "updateInfo()" class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                    </a>
+                </div>
+    </div>
+
+    <div id="addressMap" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h6><b>Address</b>: {{user.street}}, {{user.city}} {{user.state}}. {{user.zipcode}}.</h6>
+            <br>
+            <div id = "googleMap2" class = "map" map-lazy-load="https://maps.google.com/maps/api/js">
+              <ng-map id = "googleMap" center="{{user.latitude}},{{user.longitude}}" zoom="12">
+              <marker position="{{user.latitude}},{{user.longitude}}"></marker>
+            </ng-map>
+            </div>
+        </div>
+    </div>
 
     <div id="container">
     <!-- PRELOAD SCREEN -->
@@ -141,15 +308,21 @@
             <!-- <img src="img/link.svg" alt="link" id="link"> -->
             <i class = "ion-social-buffer" id= "link"></i>
 
-            <a href="https://{{user.instagram}}" target="_blank"><i class = "ion-social-instagram-outline second_links" alt="instagram" id="instagram"></i></a>
+            <a ng-click href="{{iconUrl[1]}}" target="_blank"><i class = "{{icon[1]}}" alt="" id="icon1"></i></a>
             
-            <a href="https://{{user.facebook}}" target="_blank"><i class = "second_links ion-social-facebook"  alt="facebook" id="facebook"></i></a>
+            <a ng-click href="{{iconUrl[2]}}" target="_blank"><i class = "{{icon[2]}}"  alt="" id="icon2"></i></a>
             
-            <a href="mailto:{{user.email}}"><i class = "ion-android-mail second_links" alt="email" id="email"></i></a>
+            <a ng-click href="{{iconUrl[3]}}" target="_blank"><i class = "{{icon[3]}}" alt="" id="icon3"></i></a>
             
-            <a href="https://{{user.linkedIn}}" target="_blank"><i alt="linkedIn" id="linkedIn" class = "ion-social-linkedin second_links"></i></a>
+            <a ng-click href="{{iconUrl[4]}}" target="_blank"><i alt="" id="icon4" class = "{{icon[4]}}"></i></a>
             
-            <a href="https://{{user.github}}" target="_blank"><i alt="github" id="github" class = "ion-social-github second_links"></i></a>
+            <a ng-click href="{{iconUrl[5]}}" target="_blank"><i alt="" id="icon5" class = "{{icon[5]}}"></i></a>
+
+            <a ng-click href="{{iconUrl[6]}}" target="_blank"><i alt="" id="icon6" class = "{{icon[6]}}"></i></a>
+
+            <a ng-click href="{{iconUrl[7]}}" target="_blank"><i alt="" id="icon7" class = "{{icon[7]}}"></i></a>
+
+            <a ng-click href="{{iconUrl[8]}}" target="_blank"><i alt="" id="icon8" class = "{{icon[8]}}"></i></a>
         </div>
     </div>
     <!-- FOOTER -->

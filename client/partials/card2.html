@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Username</title>
+		<meta name="author" content="Nameer Rizvi">
+		<meta name="description" content="Username: Tagline"> <!-- FILL-IN USERNAME: TAGLINE -->
+		<meta name="keywords" content="keywords, for, username"> <!-- FILL-IN KEYWORDS -->
+		<link rel="stylesheet" type="text/css" href="template1.css">
+		<!-- <meta name="google-site-verification" content="verification_token"> -->
+		<meta name="robots" content="index,follow,noodp,noydir">
+		<meta name="googlebot" content="index,follow,noodp,noydir">
+		<!-- For favicons: IE 11, Chrome, Firefox, Safari, Opera -->
+		<link rel="icon" href="img/logo.png" sizes="16x16" type="image/png">
+		<link rel="icon" href="img/logo.png" sizes="32x32" type="image/png">
+		<link rel="icon" href="img/logo.png" sizes="48x48" type="image/png">
+		<link rel="icon" href="img/logo.png" sizes="62x62" type="image/png">
+		<link rel="icon" href="img/logo.png" sizes="192x192" type="image/png">
+		<!-- End of favicon code (Ire Aderinokun: https://bitsofco.de/all-about-favicons-and-touch-icons/) -->
+		<link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script type="jquery.js"></script>
+		<script type="typeit.js"></script>
+		<script>
+			$(window).load(function() {
+				var linkclicks = 0;
+				$('#nav1').click(function(){
+					if(linkclicks == 0){
+						$('#information').animate({top: "40%"});
+						$('#links_container').animate({opacity: ".8"});
+						linkclicks++;
+						console.log("1 link works")
+					}
+					else {
+						$('#information').animate({top: "50%"});
+						$('#links_container').animate({opacity: "0"});
+						linkclicks--;
+						console.log("2 link works")
+					}
+				});
+				var linkclicks2 = 0;
+				$('#nav2').click(function(){
+					if(linkclicks2 == 0){
+						$('#information').animate({top: "30%"});
+						$('#links_container').animate({opacity: ".8"});
+						linkclicks2++;
+						console.log("1 link works")
+					}
+					else {
+						$('#information').animate({top: "50%"});
+						$('#links_container').animate({opacity: "0"});
+						linkclicks2--;
+						console.log("2 link works")
+					}
+				});
+			});
+		</script>
+		<style type="text/css">
+		/* FONTS */
+
+@import url('https://fonts.googleapis.com/css?family=Arsenal|Roboto');
+
+/* COMPREHENSIVE */
+
+*{
+ margin: 0px;
+ padding: 0px;
+}
+
+body {
+	background-image: url(img/background.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	/* (Jacob Gube: http://sixrevisions.com/css/responsive-background-image/) */
+}
+
+#container {
+	width: 80%;
+	height: 60%;
+	background-color: white;
+	border-radius: 5px;
+	opacity: .75;
+	position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#information {
+	text-align: center;
+	width: 100%;
+	margin: auto;
+	position: absolute;
+	padding-bottom: 1%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+#information h1 {
+	font-family: 'Arsenal', sans-serif;
+	font-size: 8vw;
+}
+
+#information p {
+	font-family: 'Roboto', sans-serif;
+	font-size: 4vw;
+}
+
+#line {
+	height: 2px;
+	width: 60%;
+	background-color: black;
+	opacity: .75;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 2%;
+}
+
+#links {
+	width: 100%;
+	position: absolute;
+	top: 70%;
+	padding-left: 5%;
+}
+
+#links i {
+	font-size: 7vw;
+	opacity: .8;
+}
+
+#nav1 {
+	color: black;
+}
+
+#nav1:hover {
+	opacity: 1;
+	cursor:pointer;
+}
+
+#nav2 {
+	display: none;
+	color: black
+}
+
+#links_container {
+	display: inline-block;
+	width: 80%;
+	text-align: center;
+	opacity: 0;
+}
+
+#links_container i {
+	color: black;
+	text-decoration: none;
+	margin-left: 7%;
+	font-size: 7vw;
+}
+
+#links_container i:hover {
+	opacity: 1;
+}
+
+
+/* MEDIA QUERY FOR RWD */
+
+@media (orientation: portrait) {
+	.icon {
+		font-size: 7vw;
+	}
+	#links {
+		padding-left: 0;
+		text-align: center;
+		top: 50%;
+	}
+	#links2 {
+		position: absolute;
+		top: 75%;
+		left: 50%;
+		transform: translate(-75%,-50%);
+	}
+	#nav1 {
+		display: none;
+	}
+	#nav2 {
+		display: block;
+		display: absolute;
+		display: inline-block;
+		cursor:pointer;
+	}
+	#nav2:hover {
+		opacity: 1;
+	}
+	#links_container {
+		position: relative;
+		opacity: 0;
+	}
+}
+
+
+
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<!-- MAIN CONTENT -->
+			<div id="content">
+				<!-- INFO -->
+				<div id="information">
+					<h1>John Doe</h1>
+					<div id="line"></div>
+					<p><i>Tagline: should set a 30 char limit</i></p>
+				</div>
+				<!-- LINKS -->
+				<div id="links">
+					<i class="icon ion-arrow-right-b" id="nav1"></i>
+					<div id="links_container">
+						<a href="https://www.linkedin.com/" target="_blank"><i class="icon ion-social-linkedin"></i></a>
+						<a href="https://www.github.com/" target="_blank"><i class="icon ion-social-github"></i></a>
+
+						<a href="https://www.facebook.com/" target="_blank"><i class="icon ion-social-facebook"></i></a>
+						<a href="https://www.twitter.com/" target="_blank"><i class="icon ion-social-twitter"></i></a>
+
+						<a href="https://www.instagram.com/" target="_blank"><i class="icon ion-social-instagram"></i></a>
+
+					</div>
+				</div>
+				<div id="links2">
+					<i class="icon ion-arrow-up-b" id="nav2"></i>
+				</div>
+		</div>
+	</body>
+</html>

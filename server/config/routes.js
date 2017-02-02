@@ -28,6 +28,19 @@ app.post('/changeColors', function(req, res) {
   user.changeColors(req, res)
 })
 
+app.post('/selectIcons', function(req, res) {
+  user.selectIcons(req, res)
+})
+
+app.post('/updateInfo', function(req, res) {
+  user.updateInfo(req, res)
+})
+
+
+app.post('/shuffle', function(req, res) {
+  user.shuffle(req, res)
+})
+
 app.post('/updateDefaultPic', function(req, res) {
   user.updateDefaultPic(req, res)
 })

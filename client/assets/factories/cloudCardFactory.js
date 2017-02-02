@@ -36,7 +36,25 @@
         callback(data);
       })
     }
-
+    factory.selectIcons = function(icons, callback) {
+      $http.post('/selectIcons', icons).then(function(data) {
+        console.log('icons selected')
+        callback(data);
+      })
+    }
+    factory.updateInfo = function(user, callback) {
+        console.log("here")
+      $http.post('/updateInfo', user).then(function(data) {
+        console.log('user info updated')
+        callback(data);
+      })
+    }
+    factory.shuffle = function(user, callback) {
+      $http.post('/shuffle', user).then(function(data) {
+        console.log('icons shuffled')
+        callback(data);
+      })
+    }
     factory.updateDefaultPic = function(picUrl, callback) {
       $http.post('/updateDefaultPic', picUrl).then(function(data) {
         console.log('default picture saved')

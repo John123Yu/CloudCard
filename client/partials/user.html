@@ -115,6 +115,16 @@
     </div>
     <div class = "row">
       <div class="input-field col s6">
+        <input id="twitter" type="text" name = "twitter" ng-model = 'user.twitter'>
+        <label for="twitter">Twitter</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.twitter.$dirty &&myForm.twitter.$valid && twitterLength > 0" >&#x2714;</span>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="input-field col s6">
         <input id="flickr" type="text" name = "flickr" ng-model = 'user.flickr'>
         <label for="flickr">Flickr</label>
       </div>
@@ -153,6 +163,16 @@
         <span class="success" ng-show="myForm.github.$dirty && myForm.github.$valid && githubLength > 0 ">&#x2714;</span>
       </div>
     </div>
+    <div class = "row">
+      <div class="input-field col s6">
+        <input id="Phone" type="text" name = "Phone" ng-model = 'user.phone'>
+        <label for="Phone">Phone</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.Phone.$dirty &&myForm.Phone.$valid && PhoneLength > 0" >&#x2714;</span>
+      </div>
+    </div>
     <div class="row">
       <div class="input-field col s6">
         <input  id="password" name = "password" type="text"  ng-model = 'user.password' ng-pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,32}/" required>
@@ -175,16 +195,6 @@
         <span class="success" ng-show="myForm.confirmPassword.$valid">&#x2714;</span>
       </div>
     </div>
-                <select class="instagram-select" ng-model="user.color" material-select watch>
-                <option>Red</option>
-                <option>Orange</option>
-                <option >Yellow</option>
-                <option >Green</option>
-                <option >Blue</option>
-                <option >Indigo</option>
-                <option >Violet</option>
-                </select>
-                <label>Instagram</label>
     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
       <i class="material-icons right">send</i>
     </button>

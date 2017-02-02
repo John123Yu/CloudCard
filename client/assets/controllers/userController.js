@@ -36,8 +36,17 @@ myApp.controller('userController', ['$scope', 'cloudCardFactory', '$location', '
     $scope.flickrLength = $(this).val().length
     $scope.$apply()
   })
+  $('#phone').focusout(function(){
+    $scope.phoneLength = $(this).val().length
+    $scope.$apply()
+  })
+  $('#twitter').focusout(function(){
+    $scope.twitterLength = $(this).val().length
+    $scope.$apply()
+  })
 
 
+  
   $scope.createUser = function() {
     cloudCardFactory.createUser($scope.user, function(data) {
       console.log(data)

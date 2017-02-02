@@ -105,11 +105,54 @@ module.exports = {
     })
   },
   changeColors: function (req, res) {
-    console.log(req.body)
-    User.update({_id: req.body.userId}, {instagramColor: req.body.instagramColor, linkedInColor: req.body.linkedInColor, facebookColor: req.body.facebookColor, githubColor: req.body.githubColor, emailColor: req.body.emailColor }, function(err, user) {
+    User.findOne({_id: req.body.userId},function(err, user) {
+      if(user) {
+        if(req.body.instagramColor) {user.instagramColor = req.body.instagramColor}
+        if(req.body.linkedInColor) {user.linkedInColor = req.body.linkedInColor}
+        if(req.body.facebookColor) {user.facebookColor = req.body.facebookColor}
+        if(req.body.githubColor) {user.githubColor = req.body.githubColor}
+        if(req.body.emailColor) {user.emailColor = req.body.emailColor}
+        if(req.body.twitterColor) {user.twitterColor = req.body.twitterColor}
+        if(req.body.flickrColor) {user.flickrColor = req.body.flickrColor}
+        if(req.body.personalSiteColor) {user.personalSiteColor = req.body.personalSiteColor}
+        if(req.body.phoneColor) {user.phoneColor = req.body.phoneColor}
+        if(req.body.addressColor) {user.addressColor = req.body.addressColor}
+        user.save();
+        console.log('success editing colors')
+        return res.json(user)
+      }
+      else {
+        console.log('no user yet')
+        return res.json(user)
+      }
+    })
+  },
+  selectIcons: function (req, res) {
+    User.update({_id: req.body.userId}, { icon1: req.body.icon1, icon2: req.body.icon2, icon3: req.body.icon3, icon4: req.body.icon4, icon5: req.body.icon5, icon6: req.body.icon6, icon7: req.body.icon7, icon8: req.body.icon8, icon9: req.body.icon9, icon10: req.body.icon10 }, function(err, user) {
       if(user) {
         console.log(user)
-        console.log('success editing colors')
+        console.log('success editing icons')
+        return res.json(user)
+      }
+      else {
+        console.log('no user yet')
+        return res.json(user)
+      }
+    })
+  },
+  updateInfo: function (req, res) {
+    console.log(req.body)
+    User.findOne({_id: req.body._id}).exec( function(err, user) {
+      if(user) {
+        user.street = req.body.street;
+        user.city = req.body.city;
+        user.state = req.body.state;
+        user.zipcode = req.body.zipcode;
+        user.latitude = req.body.lat;
+        user.longitude = req.body.lon;
+        user.address = "addressIcon";
+        user.save();
+        console.log('success updating user info')
         return res.json(user)
       }
       else {
@@ -131,12 +174,12 @@ module.exports = {
       }
     })
   },
+  // DELETE FROM USERS PICTURE ARRAY
   uploadBackgroundPic: function(req, res) {
     User.findOne({_id :req.body.id}).populate({path: 'backgroundPics', sort: 'created_at'}).exec( function(err, user) {
       if(err) {
         console.log(err)
       } else {
-        console.log(req.files)
         if(req.files.file) {
           console.log('got user for photo upload')
           var backgroundPic = new BackgroundPic();
@@ -197,6 +240,38 @@ module.exports = {
           });
 
         }
+      }
+    })
+  },
+  shuffle: function (req, res) {
+    var shuffle = []
+    User.findOne({_id: req.body._id}).exec( function(err, user) {
+      if(user) {
+        console.log(user)
+        console.log('success getting one user')
+        for(var i = 0; i <= 10; i++) {
+          if(eval("user.icon" + i)) {
+            shuffle.push(eval("user.icon" + i))
+          }
+        }
+        for(var i = 0; i < 20; i++) {
+          var rand = Math.floor(Math.random() * shuffle.length);
+          var rand2 = Math.floor(Math.random() * shuffle.length);
+          var temp = shuffle[rand];
+          shuffle[rand] = shuffle[rand2];
+          shuffle[rand2] = temp;
+        }
+        for(var i = 1; i <= 10; i++) {
+          eval("user.icon" + i + "= shuffle[i-1]")
+          // console.log(eval("user.icon" + i + "= shuffle[i-1]"))
+        }
+
+        user.save();
+        return res.json(user)
+      }
+      else {
+        console.log('no user yet')
+        return res.json(user)
       }
     })
   },
