@@ -12,11 +12,7 @@ var jade = require('jade');
 var aws = require('aws-sdk');
 var BUCKET = 'cloudcard';
 
-aws.config.loadFromPath(require('path').join(__dirname, './aws-config.json'));
-
-// aws.config.aws_access_key_id = ''
-// aws.config.aws_secret_access_key = ''
-// aws.config.region = 'us-east-1'
+aws.config.loadFromPath(require('path').join(__dirname, './halo-doc.json'));
 
 var s9 = new aws.S3();
 
@@ -58,8 +54,52 @@ module.exports = {
       }
     })
   },
+  addBasicInfo: function (req, res) {
+    console.log(req.body)
+    User.findOne({_id: req.body.id}).exec( function(err, user) {
+      if(user) {
+        user.description = req.body.description;
+        user.age = req.body.age;
+        user.occupation = req.body.occupation;
+        user.education = req.body.education;
+        user.phone = req.body.phone;
+        user.street = req.body.street;
+        user.city = req.body.city;
+        user.state = req.body.state;
+        user.zipcode = req.body.zipcode;
+        user.save();
+        console.log('success updating user info')
+        return res.json(user)
+      }
+      else {
+        console.log('no user yet')
+        return res.json(user)
+      }
+    })
+  },
+  addSocialMedia: function (req, res) {
+    console.log(req.body)
+    User.findOne({_id: req.body.id}).exec( function(err, user) {
+      if(user) {
+        user.instagram = req.body.instagram;
+        user.facebook = req.body.facebook;
+        user.twitter = req.body.twitter;
+        user.flickr = req.body.flickr;
+        user.personalSite = req.body.personalSite;
+        user.linkedIn = req.body.linkedIn;
+        user.github = req.body.github;
+        user.save();
+        console.log('success updating user info')
+        return res.json(user)
+      }
+      else {
+        console.log('no user yet')
+        return res.json(user)
+      }
+    })
+  },
   login: function(req, res) {
-    User.find({ email: req.body.emailLogin.toLowerCase()}, function(err, context) {
+    User.find({ email: req.body.email.toLowerCase()}, function(err, context) {
       if(context[0] == null){
         console.log("no email found")
         return res.json({noEmail: "No such email in database"})
@@ -69,11 +109,8 @@ module.exports = {
         return res.json({notConfirmed: "Not confirmed"})
       }
       if(context[0]) {
-        // if(context[0].email == "friendevents1@gmail.com") {
-        //   context[0].addAdmin();
-        // }
         console.log('success finding email')
-        if(context[0].validPassword(req.body.passwordLogin)) {
+        if(context[0].validPassword(req.body.password)) {
           return res.json({_id:context[0]._id})
         } else {
           console.log("wrong password")
@@ -106,7 +143,23 @@ module.exports = {
   },
   changeColors: function (req, res) {
     User.findOne({_id: req.body.userId},function(err, user) {
-      if(user) {
+      if(user && req.body.allColor && req.body.allColorTrue) {
+        console.log(req.body.allColor)
+        user.instagramColor = req.body.allColor;
+        user.linkedInColor = req.body.allColor;
+        user.facebookColor = req.body.allColor;
+        user.githubColor = req.body.allColor;
+        user.emailColor = req.body.allColor;
+        user.twitterColor = req.body.allColor;
+        user.flickrColor = req.body.allColor;
+        user.personalSiteColor = req.body.allColor;
+        user.phoneColor = req.body.allColor;
+        user.addressColor = req.body.allColor;
+        user.save();
+        console.log('success editing colors to all Color')
+        return res.json(user)
+      }
+      else if(user) {
         if(req.body.instagramColor) {user.instagramColor = req.body.instagramColor}
         if(req.body.linkedInColor) {user.linkedInColor = req.body.linkedInColor}
         if(req.body.facebookColor) {user.facebookColor = req.body.facebookColor}
@@ -194,21 +247,15 @@ module.exports = {
           var extension = file.path.substring(file.path.lastIndexOf('.'));
           var temp = uuid.v4()
           var destPath = temp + extension;
-          var base = "https://s3.amazonaws.com//";
-          backgroundPic.url = ('https://s3.amazonaws.com//' + destPath)
+          var base = "https://s3.amazonaws.com/cloudcard/";
+          backgroundPic.url = ('https://s3.amazonaws.com/cloudcard/' + destPath)
           backgroundPic.destPath = destPath
           backgroundPic.save()
           user.backgroundPics.push(backgroundPic)
-          user.defaultBackgroundPic = 'https://s3.amazonaws.com//' + destPath
+          user.defaultBackgroundPic = 'https://s3.amazonaws.com/cloudcard/' + destPath
           user.save();  
-          
 
-          // user.save()
-          // console.log(user.backgroundPics)
-          // console.log(user.backgroundPics.length)
-          // console.log(user.backgroundPics[0])
-          // console.log(user.backgroundPics[0].destPath)
-          if(user.backgroundPics.length >= 6) {
+          if(user.backgroundPics.length >= 9) {
             var params = {
               Bucket: 'cloudcard', 
               Delete: { 
@@ -232,13 +279,10 @@ module.exports = {
               }         
             });  
           }
-
-
           return s3Impl.writeFile(destPath, stream, {ContentType: file.type}).then(function(one){
               fs.unlink(file.path);
               res.send(base + destPath); 
           });
-
         }
       }
     })

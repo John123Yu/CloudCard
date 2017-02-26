@@ -1,0 +1,150 @@
+/* FONTS */
+
+@import url('https://fonts.googleapis.com/css?family=Arsenal|Roboto');
+
+/* COMPREHENSIVE */
+
+*{
+ margin: 0px;
+ padding: 0px;
+}
+
+body {
+	background-image: url(img/background.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	/* (Jacob Gube: http://sixrevisions.com/css/responsive-background-image/) */
+}
+
+#container {
+	width: 85%;
+	height: 65%;
+	/*background-color: white;*/
+	border-radius: 5px;
+	position: absolute;
+    margin: auto;
+    /*opacity: .9;*/
+    background: rgba(255, 255, 255, 0.79);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#information {
+	text-align: center;
+	width: 100%;
+	margin: auto;
+	position: absolute;
+	padding-bottom: 1%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+#information h1 {
+	font-family: 'Arsenal', sans-serif;
+	font-size: 8vw;
+}
+
+#information p {
+	font-family: 'Roboto', sans-serif;
+	font-size: 4vw;
+}
+
+#line {
+	height: 2px;
+	width: 60%;
+	background-color: black;
+	opacity: .85;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 2%;
+}
+
+#links {
+	width: 100%;
+	position: absolute;
+	top: 70%;
+	padding-left: 5%;
+}
+
+#links i {
+	font-size: 7vw;
+	/*opacity: 1 !important;*/
+	background: rgba(255, 255, 255, 0);
+}
+
+#nav1 {
+	color: black;
+}
+
+#nav1:hover {
+	opacity: 1;
+	cursor:pointer;
+}
+
+#nav2 {
+	display: none;
+	color: black
+}
+
+#links_container {
+	display: inline-block;
+	width: 80%;
+	text-align: center;
+	opacity: 0;
+	/*float: right;*/
+}
+
+.s1Icons {
+}
+#links_container i {
+	color: black;
+	text-decoration: none;
+	margin-left: 7%;
+	font-size: 7vw;
+	text-align: center;
+}
+
+#links_container i:hover {
+	opacity: 1;
+}
+
+
+/* MEDIA QUERY FOR RWD */
+
+@media (orientation: portrait) {
+	.icon {
+		font-size: 7vw;
+	}
+	#links {
+		padding-left: 0;
+		text-align: center;
+		top: 50%;
+	}
+	#links2 {
+		position: absolute;
+		top: 75%;
+		left: 50%;
+		transform: translate(-75%,-50%);
+	}
+	#nav1 {
+		display: none;
+	}
+	#nav2 {
+		display: block;
+		display: absolute;
+		display: inline-block;
+		cursor:pointer;
+	}
+	#nav2:hover {
+		opacity: 1;
+	}
+	#links_container {
+		position: relative;
+		opacity: 0;
+	}
+}

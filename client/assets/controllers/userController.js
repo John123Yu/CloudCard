@@ -45,13 +45,42 @@ myApp.controller('userController', ['$scope', 'cloudCardFactory', '$location', '
     $scope.$apply()
   })
 
-
-  
   $scope.createUser = function() {
     cloudCardFactory.createUser($scope.user, function(data) {
       console.log(data)
+      $cookies.put('loginId', data.data._id)      
+      $location.url('/users2')
     })
   }
+
+  $scope.addBasicInfo = function() {
+    console.log("here")
+    $scope.user2.id = $cookies.get('loginId')
+    cloudCardFactory.addBasicInfo($scope.user2, function(data) {
+      console.log(data)
+      $location.url('/users3')
+    })
+  }
+
+  $scope.addSocialMedia = function() {
+    console.log("here")
+    $scope.user3.id = $cookies.get('loginId')
+    cloudCardFactory.addBasicInfo($scope.user3, function(data) {
+      console.log(data)
+      $location.url('/users3')
+    })
+  }
+
+  $scope.login = function() {
+    console.log($scope.userLogin)
+    cloudCardFactory.login($scope.userLogin, function(data) {
+      console.log(data)
+      $cookies.put('loginId', data.data._id)    
+      $location.url('/users2')
+    })
+  }
+
+
 
 }]).directive("compareTo", function() {
     return {

@@ -23,7 +23,9 @@
     <script type="text/javascript" src = 'assets/factories/cloudCardFactory.js'></script>
     <script type="text/javascript" src = 'assets/controllers/userController.js'></script>
     <script type="text/javascript" src = 'assets/controllers/indexController.js'></script>
-     <script type="text/javascript" src = 'assets/controllers/card1Controller.js'></script>
+    <script type="text/javascript" src = 'assets/controllers/card1Controller.js'></script>
+    <script type="text/javascript" src = 'assets/controllers/card2Controller.js'></script>
+    <script type="text/javascript" src = 'assets/controllers/homeController.js'></script>
 <script>
     myApp.config(function ($routeProvider) {
       $routeProvider
@@ -36,8 +38,23 @@
         .when('/users', {
             templateUrl: 'partials/user.html'
         })
+        .when('/users2', {
+            templateUrl: 'partials/user2.html'
+        })
+        .when('/users3', {
+            templateUrl: 'partials/user3.html'
+        })
+        .when('/login', {
+            templateUrl: 'partials/login.html'
+        })
+        .when('/home', {
+            templateUrl: 'partials/home.html'
+        })
         .when('/card1/:id', {
             templateUrl: 'partials/card1.html'
+        })
+        .when('/card2/:id', {
+            templateUrl: 'partials/card2.html'
         })
         .otherwise({
           redirectTo: '/'
@@ -47,7 +64,7 @@
     <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-        <title>Nameer Rizvi</title>
+        <title>Cloud Card</title>
         <meta name="author" content="Nameer Rizvi">
         <meta name="description" content="Nameer Rizvi: DC-Area Based Web Designer/Developer.">
         <meta name="keywords" content="web developer, web designer, css, html, web design, freelance">
@@ -56,14 +73,12 @@
         <meta name="robots" content="index,follow,noodp,noydir">
         <meta name="googlebot" content="index,follow,noodp,noydir">
         <!-- For favicons: IE 11, Chrome, Firefox, Safari, Opera -->
-        <link rel="icon" href="img/logo.png" sizes="16x16" type="image/png">
+ <!--        <link rel="icon" href="img/logo.png" sizes="16x16" type="image/png">
         <link rel="icon" href="img/logo.png" sizes="32x32" type="image/png">
         <link rel="icon" href="img/logo.png" sizes="48x48" type="image/png">
         <link rel="icon" href="img/logo.png" sizes="62x62" type="image/png">
-        <link rel="icon" href="img/logo.png" sizes="192x192" type="image/png">
-    <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="icon" href="img/logo.png" sizes="192x192" type="image/png"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/4.3.0/typeit.min.js"></script>
-    <script type="typeit.js"></script>
   </head>
   <body>
     <div ng-view=""></div>

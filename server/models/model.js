@@ -27,7 +27,6 @@ var userSchema = new mongoose.Schema({
   },
   description : {
     type: String,
-    required: [true],
     minlength: [10],
     maxlength: [180]
   },

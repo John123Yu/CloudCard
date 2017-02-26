@@ -12,6 +12,14 @@ app.post('/user',function(req, res){
   user.create(req, res)
 });
 
+app.post('/addBasicInfo',function(req, res){
+  user.addBasicInfo(req, res)
+});
+
+app.post('/addSocialMedia',function(req, res){
+  user.addSocialMedia(req, res)
+});
+
 app.post('/login', function(req, res) {
   user.login(req, res)
 });

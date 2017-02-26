@@ -1,0 +1,43 @@
+<style type="text/css">
+  .error {
+    color: red;
+  }
+  .success {
+    color: green;
+  }
+</style>
+<div ng-controller='userController'>
+<h2>Set up your Cloud Card Account</h2>
+
+<form class="col s12 form-wrapper" name="myForm" ng-submit = "login()">
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="email" name = "email" type="email"  ng-model = 'userLogin.email' required>
+        <label for="email">Email *</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class = "error" ng-show="myForm.email.$dirty && myForm.email.$error.required">Required Field.</span>
+        <span class = "error" ng-show="myForm.email.$error.email">
+        Not a valid email.</span>
+        <span class="success" ng-show="myForm.email.$valid">&#x2714;</span>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="input-field col s6">
+        <input  id="password" name = "password" type="text"  ng-model = 'userLogin.password' ng-pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,32}/" required>
+        <label for="first_name">Password *</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class = "error" class="error" ng-show="myForm.password.$error.pattern && myForm.password.$dirty">Requires 1 uppercase, lowercase, number, and special character. 8-32 characters.</span>
+        <span class="success" ng-show="myForm.password.$valid">&#x2714;</span>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right">send</i>
+    </button>
+    </form>
+    <br>
+</div>

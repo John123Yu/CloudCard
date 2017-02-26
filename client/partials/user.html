@@ -1,7 +1,13 @@
 <style type="text/css">
+  .error {
+    color: red;
+  }
+  .success {
+    color: green;
+  }
 </style>
 <div ng-controller='userController'>
-<h2>Set up your Cloud Presence</h2>
+<h2>Set up your Cloud Card Account</h2>
 
 </form>
   <div class = "container userForm">
@@ -52,127 +58,7 @@
         <span class="success" ng-show="myForm.email.$valid">&#x2714;</span>
       </div>
     </div>
-    <div class="row">
-        <div class="input-field col s6">
-          <textarea id="description" name = "description" g-maxlength="180" ng-minlength="10" ng-model = "user.description" class="materialize-textarea" required></textarea>
-          <label for="description">Textarea</label>
-        </div>
-        <div class = "col s6">
-          <br>
-          <span class = "error" ng-show="myForm.description.$dirty && myForm.description.$invalid">Required Field. 10-180 Characters.</span>
-          <span class="success" ng-show="myForm.description.$valid">&#x2714;</span>
-      </div>
-      </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <input id="age" name = "age" ng-Inputlength type="number"  ng-model = 'user.age'>
-        <label for="age">Age</label>
-      </div>
-      <div class = "col s6">
-        <br>
-        <span class="success" ng-show="myForm.age.$dirty && myForm.age.$valid && ageLength > 0 ">&#x2714;</span>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <input id="occupation" name = "occupation" type="text"  ng-model = 'user.occupation'>
-        <label for="occupation">Occupation</label>
-      </div>
-      <div class = "col s6">
-        <br>
-        <span class="success" ng-show="myForm.occupation.$dirty &&myForm.occupation.$valid && occupationLength > 0 ">&#x2714;</span>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <input id="education" type="text" name = "education" ng-model = 'user.education'>
-        <label for="education">Education/School</label>
-      </div>
-      <div class = "col s6">
-        <br>
-        <span class="success" ng-show="myForm.education.$dirty &&myForm.education.$valid && educationLength > 0 ">&#x2714;</span>
-      </div>
-    </div>
-    <div class = "row">
-      <div class="input-field col s6">
-        <input id="instagram" type="text" name = "instagram" ng-model = 'user.instagram'>
-        <label for="instagram">Instagram</label>
-      </div>
-      <div class = "col s6">
-        <br>
-        <span class="success" ng-show="myForm.instagram.$dirty &&myForm.instagram.$valid && instagramLength > 0"> &#x2714;</span>
-      </div>
-    </div>
-    <div class = "row">
-      <div class="input-field col s6">
-        <input id="facebook" type="text" name = "facebook" ng-model = 'user.facebook'>
-        <label for="facebook">Facebook</label>
-      </div>
-      <div class = "col s6">
-        <br>
-        <span class="success" ng-show="myForm.facebook.$dirty &&myForm.facebook.$valid && facebookLength > 0" >&#x2714;</span>
-      </div>
-    </div>
-    <div class = "row">
-      <div class="input-field col s6">
-        <input id="twitter" type="text" name = "twitter" ng-model = 'user.twitter'>
-        <label for="twitter">Twitter</label>
-      </div>
-      <div class = "col s6">
-        <br>
-        <span class="success" ng-show="myForm.twitter.$dirty &&myForm.twitter.$valid && twitterLength > 0" >&#x2714;</span>
-      </div>
-    </div>
-    <div class = "row">
-      <div class="input-field col s6">
-        <input id="flickr" type="text" name = "flickr" ng-model = 'user.flickr'>
-        <label for="flickr">Flickr</label>
-      </div>
-      <div class = "col s6">
-        <br>
-        <span class="success" ng-show="myForm.flickr.$dirty &&myForm.flickr.$valid && flickrLength > 0" >&#x2714;</span>
-      </div>
-    </div>
-    <div class = "row">
-      <div class="input-field col s6">
-        <input id="personalSite" name = "personalSite" type="text"  ng-model = 'user.personalSite'>
-        <label for="personalSite">Personal Site</label>
-      </div>
-      <div class = "col s6">
-        <br>
-        <span class="success" ng-show="myForm.personalSite.$dirty &&myForm.personalSite.$valid && personalSiteLength > 0" >&#x2714;</span>
-      </div>
-    </div>
-    <div class = "row">
-      <div class="input-field col s6">
-        <input id="linkedIn" type="text" name = "linkedIn" ng-model = 'user.linkedIn'>
-        <label for="linkedIn">LinkedIn</label>
-      </div>
-      <div class = "col s6">
-        <br>
-        <span class="success" ng-show="myForm.linkedIn.$dirty &&myForm.linkedIn.$valid && linkedInLength > 0 ">&#x2714;</span>
-      </div>
-    </div>
-    <div class = "row">
-      <div class="input-field col s6">
-        <input id="github" type="text" name = "github" ng-model = 'user.github'>
-        <label for="github">Github</label>
-      </div>
-      <div class = "col s6">
-        <br>
-        <span class="success" ng-show="myForm.github.$dirty && myForm.github.$valid && githubLength > 0 ">&#x2714;</span>
-      </div>
-    </div>
-    <div class = "row">
-      <div class="input-field col s6">
-        <input id="Phone" type="text" name = "Phone" ng-model = 'user.phone'>
-        <label for="Phone">Phone</label>
-      </div>
-      <div class = "col s6">
-        <br>
-        <span class="success" ng-show="myForm.Phone.$dirty &&myForm.Phone.$valid && PhoneLength > 0" >&#x2714;</span>
-      </div>
-    </div>
+    
     <div class="row">
       <div class="input-field col s6">
         <input  id="password" name = "password" type="text"  ng-model = 'user.password' ng-pattern = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,32}/" required>

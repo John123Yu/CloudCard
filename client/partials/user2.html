@@ -1,0 +1,93 @@
+<style type="text/css">
+  .error {
+    color: red;
+  }
+  .success {
+    color: green;
+  }
+</style>
+<div ng-controller='userController'>
+<h2>Fill out your basic information</h2>
+  <div class = "container userForm">
+    <form class="col s12 form-wrapper" name="myForm" ng-submit = "addBasicInfo()">
+    <div class="row">
+        <div class="input-field col s6">
+          <textarea id="description" name = "description" g-maxlength="180" ng-minlength="10" ng-model = "user2.description" class="materialize-textarea" required></textarea>
+          <label for="description">Personal Bio</label>
+        </div>
+        <div class = "col s6">
+          <br>
+          <span class = "error" ng-show="myForm.description.$dirty && myForm.description.$invalid">Required Field. 10-180 Characters.</span>
+          <span class="success" ng-show="myForm.description.$valid">&#x2714;</span>
+      </div>
+      </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="age" name = "age" ng-Inputlength type="number"  ng-model = 'user2.age'>
+        <label for="age">Age</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.age.$dirty && myForm.age.$valid && ageLength > 0 ">&#x2714;</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="occupation" name = "occupation" type="text"  ng-model = 'user2.occupation'>
+        <label for="occupation">Occupation</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.occupation.$dirty &&myForm.occupation.$valid && occupationLength > 0 ">&#x2714;</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="education" type="text" name = "education" ng-model = 'user2.education'>
+        <label for="education">Education/School</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.education.$dirty &&myForm.education.$valid && educationLength > 0 ">&#x2714;</span>
+      </div>
+    </div>
+    <div class = "row">
+      <div class="input-field col s6">
+        <input id="Phone" type="text" name = "Phone" ng-model = 'user2.phone'>
+        <label for="Phone">Phone</label>
+      </div>
+      <div class = "col s6">
+        <br>
+        <span class="success" ng-show="myForm.Phone.$dirty &&myForm.Phone.$valid && PhoneLength > 0" >&#x2714;</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+      <input  id="street" name = "street" type="text"  ng-model = 'user.street'>
+      <label for="street">Street Address</label>
+    </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+      <input  id="city" name = "city" type="text"  ng-model = 'user.city'>
+      <label for="city">City</label>
+    </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+      <input  id="state" name = "state" type="text"  ng-model = 'user.state'>
+      <label for="state">State</label>
+    </div>
+    </div>
+     <div class="row">
+      <div class="input-field col s6">
+      <input  id="zipcode" name = "zipcode" type="text"  ng-model = 'user.zipcode'>
+      <label for="zipcode">Zipcode</label>
+    </div>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right">send</i>
+    </button>
+    </form>
+    <br>
+</div>

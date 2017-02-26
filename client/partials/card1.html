@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="card1.css">
 <style type="text/css">
     body {
         /*background-image: url(img/background.jpg);*/
@@ -25,6 +26,8 @@
             <form class="col s12 form-wrapper" name="myForm" ng-submit = "changeColors()">
                 <div ng-hide="instagramColorSelect" class = "input-field">
                 <select class="instagram-select" ng-model="color.instagramColor" material-select watch>
+                <option value = "#e95950"> Instagram Red Orange</option>
+                <option value = "#125688">Instagram Blue</option>
                 <option value = "#FF0000">Red</option>
                 <option value = "#FF7F00">Orange</option>
                 <option value = "#FFFF00">Yellow</option>
@@ -37,6 +40,7 @@
                 </div>
                 <div ng-hide="linkedInColorSelect" class = "input-field">
                 <select class="linkedIn-select" ng-model="color.linkedInColor" material-select watch>
+                <option value = "#007bb5">LinkedIn Blue</option>
                 <option value = "#FF0000">Red</option>
                 <option value = "#FF7F00">Orange</option>
                 <option value = "#FFFF00">Yellow</option>
@@ -49,6 +53,7 @@
                 </div>
                 <div ng-hide="facebookColorSelect" class = "input-field">
                 <select class="facebook-select" ng-model="color.facebookColor" material-select watch>
+                <option value = "#3b5998">Facebook Blue</option>
                 <option value = "#FF0000">Red</option>
                 <option value = "#FF7F00">Orange</option>
                 <option value = "#FFFF00">Yellow</option>
@@ -61,6 +66,7 @@
                 </div>
                 <div ng-hide="githubColorSelect" class = "input-field">
                 <select class="github-select" ng-model="color.githubColor" material-select watch>
+                <option value = "#000000">Github Black</option>
                 <option value = "#FF0000">Red</option>
                 <option value = "#FF7F00">Orange</option>
                 <option value = "#FFFF00">Yellow</option>
@@ -85,6 +91,7 @@
                 </div>
                 <div ng-hide="twitterColorSelect" class = "input-field">
                 <select class="twitter-select" ng-model="color.twitterColor" material-select watch>
+                <option value = "#55acee">Twitter Blue</option>
                 <option value = "#FF0000">Red</option>
                 <option value = "#FF7F00">Orange</option>
                 <option value = "#FFFF00">Yellow</option>
@@ -97,6 +104,7 @@
                 </div>
                 <div ng-hide="flickrColorSelect" class = "input-field">
                 <select class="flickr-select" ng-model="color.flickrColor" material-select watch>
+                <option value = "#ff0084">Flickr Pink</option>
                 <option value = "#FF0000">Red</option>
                 <option value = "#FF7F00">Orange</option>
                 <option value = "#FFFF00">Yellow</option>
@@ -144,6 +152,17 @@
                 </select>
                 <label>Address</label>
                 </div>
+                <br>
+                <div class = "input-field">
+                Set all icons to color of your choice:
+                <input type="color" class = "allColor-select" ng-model = "color.allColor">
+                <br>
+                <p>
+                <input ng-model="color.allColorTrue"  ng-false-value="null" ng-true-value= "'true'" type="checkbox" id="allColorCheckbox"/>
+                 <label for="allColorCheckbox">Change All Colors</label>
+                </p>
+                <br>
+                </div>
         </div>
                 <div class = "modal-footer">
                     <button ng-click = "changeColors()" class ="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Submit
@@ -159,7 +178,7 @@
             <br>
             <form  ng-app="fileUpload" class="col s12 form-wrapper" name="myForm">
             <input class = "btnuploadPicBtn" type="file" ngf-select ng-model="picFile" name="file" 
-            accept="image/*" ngf-max-size="4MB" required ngf-model-invalid="errorFile">
+            accept="image/*" ngf-max-size="5MB" required ngf-model-invalid="errorFile">
             <br>
             <br>
             <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action" ng-click="uploadBackgroundPic(picFile)">Upload Your Own Pictures
@@ -306,23 +325,23 @@
         <!-- LINKS -->
         <div id="right">
             <!-- <img src="img/link.svg" alt="link" id="link"> -->
-            <i class = "ion-social-buffer" id= "link"></i>
+            <i class = "ion-locked" id= "link"></i>
 
-            <a ng-click href="{{iconUrl[1]}}" target="_blank"><i class = "{{icon[1]}}" alt="" id="icon1"></i></a>
+            <a href="{{iconUrl[1]}}" target="_blank"><i class = "{{icon[1]}}" alt="" id="icon1"></i></a>
             
-            <a ng-click href="{{iconUrl[2]}}" target="_blank"><i class = "{{icon[2]}}"  alt="" id="icon2"></i></a>
+            <a href="{{iconUrl[2]}}" target="_blank"><i class = "{{icon[2]}}"  alt="" id="icon2"></i></a>
             
-            <a ng-click href="{{iconUrl[3]}}" target="_blank"><i class = "{{icon[3]}}" alt="" id="icon3"></i></a>
+            <a href="{{iconUrl[3]}}" target="_blank"><i class = "{{icon[3]}}" alt="" id="icon3"></i></a>
             
-            <a ng-click href="{{iconUrl[4]}}" target="_blank"><i alt="" id="icon4" class = "{{icon[4]}}"></i></a>
+            <a href="{{iconUrl[4]}}" target="_blank"><i alt="" id="icon4" class = "{{icon[4]}}"></i></a>
             
-            <a ng-click href="{{iconUrl[5]}}" target="_blank"><i alt="" id="icon5" class = "{{icon[5]}}"></i></a>
+            <a href="{{iconUrl[5]}}" target="_blank"><i alt="" id="icon5" class = "{{icon[5]}}"></i></a>
 
-            <a ng-click href="{{iconUrl[6]}}" target="_blank"><i alt="" id="icon6" class = "{{icon[6]}}"></i></a>
+            <a href="{{iconUrl[6]}}" target="_blank"><i alt="" id="icon6" class = "{{icon[6]}}"></i></a>
 
-            <a ng-click href="{{iconUrl[7]}}" target="_blank"><i alt="" id="icon7" class = "{{icon[7]}}"></i></a>
+            <a href="{{iconUrl[7]}}" target="_blank"><i alt="" id="icon7" class = "{{icon[7]}}"></i></a>
 
-            <a ng-click href="{{iconUrl[8]}}" target="_blank"><i alt="" id="icon8" class = "{{icon[8]}}"></i></a>
+            <a href="{{iconUrl[8]}}" target="_blank"><i alt="" id="icon8" class = "{{icon[8]}}"></i></a>
         </div>
     </div>
     <!-- FOOTER -->

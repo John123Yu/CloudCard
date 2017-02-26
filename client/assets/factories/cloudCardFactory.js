@@ -7,6 +7,16 @@
         callback(data)
       })
     }
+    factory.addBasicInfo = function(userInfo, callback) {
+      $http.post('/addBasicInfo', userInfo).then(function(data){
+        callback(data)
+      })
+    }
+    factory.addSocialMedia = function(userInfo, callback) {
+      $http.post('/addSocialMedia', userInfo).then(function(data){
+        callback(data)
+      })
+    }
     factory.login = function(user, callback) {
       $http.post('/login', user).then(function(data){
         console.log("login data back")
